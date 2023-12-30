@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS lists (
+    id SERIAL UNIQUE PRIMARY KEY,
+    name VARCHAR(255),
+    type VARCHAR(255)
+);

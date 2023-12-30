@@ -1,0 +1,3 @@
+Main-Class: pl.prg.ba.Main
+Class-Path: postgresql-42.7.1.jar
+
