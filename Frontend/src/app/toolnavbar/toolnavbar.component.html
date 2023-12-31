@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+    <mat-list>
+      <mat-list-item><a routerLink="/home" style="text-decoration: none">Home</a></mat-list-item>
+      <mat-list-item><a routerLink="/public-lists" style="text-decoration: none">Public lists</a></mat-list-item>
+      <mat-list-item><a routerLink="/users" style="text-decoration: none">Users</a></mat-list-item>
+      <mat-list-item><a routerLink="/sign-in" style="text-decoration: none">Sign In</a></mat-list-item>
+      <mat-list-item><a routerLink="/sign-up" style="text-decoration: none">Sign Up</a></mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet>
+
+    </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

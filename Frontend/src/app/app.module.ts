@@ -7,12 +7,24 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from '@angular/material/icon';
 import { ToolnavbarComponent } from './toolnavbar/toolnavbar.component';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {FormsModule} from "@angular/forms";
+import { HomeComponent } from './home/home.component';
+import {MatListModule} from "@angular/material/list";
+import { ShowAllListsComponent } from './show-all-lists/show-all-lists.component';
+import { ShowAllUsersComponent } from './show-all-users/show-all-users.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolnavbarComponent
+    ToolnavbarComponent,
+    HomeComponent,
+    ShowAllListsComponent,
+    ShowAllUsersComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +32,10 @@ import { ToolnavbarComponent } from './toolnavbar/toolnavbar.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    FormsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
