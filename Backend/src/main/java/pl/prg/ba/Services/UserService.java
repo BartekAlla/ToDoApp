@@ -34,8 +34,11 @@ public class UserService {
         if (user.isPresent()) {
             User existingUser = user.get();
             existingUser.setName(userDetails.getName());
+            existingUser.setSurname(userDetails.getSurname());
+            existingUser.setGender(userDetails.getGender());
+            existingUser.setAge(userDetails.getAge());
             existingUser.setEmail(userDetails.getEmail());
-            return userRepository.save(existingUser);
+            existingUser.setPassword(userDetails.getPassword());
         }
         return null;
     }

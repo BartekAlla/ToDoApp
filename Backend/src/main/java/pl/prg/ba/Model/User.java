@@ -141,4 +141,21 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+
+    }
 }
