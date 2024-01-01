@@ -28,7 +28,7 @@ public class ToDoApp {
         initCurrentUser();
         initUsers();
         initLists();
-        initUserListConnections();
+        //initUserListConnections();
     }
 
     private void initCurrentUser() {
@@ -72,30 +72,30 @@ public class ToDoApp {
         }
     }
 
-    private void initUserListConnections() {
-        String sql = "SELECT * FROM users_lists";
-        try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    int userID = resultSet.getInt("userid");
-                    int listID = resultSet.getInt("listid");
-                    String userRole = resultSet.getString("userrole");
-                    addListWithProvidedIDToUserLists(userID, listID);
-                    addUserWithHisRoleToList(listID, userID, userRole);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void initUserListConnections() {
+//        String sql = "SELECT * FROM users_lists";
+//        try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {
+//            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+//                while (resultSet.next()) {
+//                    int userID = resultSet.getInt("userid");
+//                    int listID = resultSet.getInt("listid");
+//                    String userRole = resultSet.getString("userrole");
+//                    //addListWithProvidedIDToUserLists(userID, listID);
+//                    addUserWithHisRoleToList(listID, userID, userRole);
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    private void addUserWithHisRoleToList(int listID, int userID, String userRole) {
-        ListManagement.getListByID(listID)
-                .addUserAndHisRoleToTheList(UserManagement.getUserByID(userID), userRole);
+//    private void addUserWithHisRoleToList(int listID, int userID, String userRole) {
+//        ListManagement.getListByID(listID)
+//                .addUserAndHisRoleToTheList(UserManagement.getUserByID(userID), userRole);
+//
+//    }
 
-    }
-
-    private void addListWithProvidedIDToUserLists(int userID, int listID) {
-        UserManagement.getUserByID(userID).addListToUser(ListManagement.getListByID(listID));
-    }
+//    private void addListWithProvidedIDToUserLists(int userID, int listID) {
+//        UserManagement.getUserByID(userID).addListToUser(ListManagement.getListByID(listID));
+//    }
 }

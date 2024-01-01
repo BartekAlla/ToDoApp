@@ -16,7 +16,7 @@ public class ListCreator {
         ListManagement.addList(newList);
         addListToDB(newList, user);
         newList.setId(List.getListIDByName(name));
-        user.addList(newList);
+        //user.addList(newList);
     }
 
     private static void addListToDB(List list, User user) {

@@ -28,9 +28,9 @@ public class DatabaseConnection {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url, user, password);
-            executeSqlFromFile("Backend/src/main/java/pl/prg/ba/PostgreSQL/SQLFiles/users.sql");
-            executeSqlFromFile("Backend/src/main/java/pl/prg/ba/PostgreSQL/SQLFiles/lists.sql");
-            executeSqlFromFile("Backend/src/main/java/pl/prg/ba/PostgreSQL/SQLFiles/users_lists.sql");
+            //executeSqlFromFile("Backend/src/main/java/pl/prg/ba/PostgreSQL/SQLFiles/users.sql");
+            //executeSqlFromFile("Backend/src/main/java/pl/prg/ba/PostgreSQL/SQLFiles/lists.sql");
+            //executeSqlFromFile("Backend/src/main/java/pl/prg/ba/PostgreSQL/SQLFiles/users_lists.sql");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

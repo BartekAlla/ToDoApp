@@ -17,13 +17,13 @@ public class DeleteList {
         } else {
             System.out.print("Chose ID of a list to be deleted:");
             int userChoice = ScannerHolder.scanner.nextInt();
-            if (checkIfCurrentUserIsOwnerOfTheListToBeDeleted(userChoice)) {
-                ListManagement.deleteList(userChoice);
-                UserManagement.getUsers().get(ToDoApp.currentUserEmail).deleteList(userChoice);
-                deleteListRecordFromDB(userChoice);
-            } else {
-                System.out.println("You are not the owner of this list.");
-            }
+//            if (checkIfCurrentUserIsOwnerOfTheListToBeDeleted(userChoice)) {
+//                ListManagement.deleteList(userChoice);
+//                //UserManagement.getUsers().get(ToDoApp.currentUserEmail).deleteList(userChoice);
+//                deleteListRecordFromDB(userChoice);
+//            } else {
+//                System.out.println("You are not the owner of this list.");
+//            }
 
         }
     }
@@ -61,7 +61,7 @@ public class DeleteList {
         }
     }
 
-    private static boolean checkIfCurrentUserIsOwnerOfTheListToBeDeleted(int userChoice) {
-        return ListManagement.getLists().get(userChoice).getListOwner().getEmail().equals(ToDoApp.currentUserEmail);
-    }
+//    private static boolean checkIfCurrentUserIsOwnerOfTheListToBeDeleted(int userChoice) {
+//        return ListManagement.getLists().get(userChoice).getListOwner().getEmail().equals(ToDoApp.currentUserEmail);
+//    }
 }
