@@ -14,6 +14,9 @@ import {MatListModule} from "@angular/material/list";
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatTabsModule} from "@angular/material/tabs";
+import { UserListComponent } from './user-list/user-list.component';
+import { ListsComponent } from './lists/lists.component';
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import {MatCardModule} from "@angular/material/card";
     ToolnavbarComponent,
     HomeComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserListComponent,
+    ListsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import {MatCardModule} from "@angular/material/card";
     MatSidenavModule,
     FormsModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
