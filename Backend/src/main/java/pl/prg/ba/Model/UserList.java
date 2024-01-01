@@ -1,30 +1,28 @@
 package pl.prg.ba.Model;
 
 import jakarta.persistence.*;
-import pl.prg.ba.Enums.List.ListRole;
 import pl.prg.ba.Enums.List.ListType;
-import pl.prg.ba.Management.UserManagement;
 import pl.prg.ba.PostgreSQL.DatabaseConnection;
 
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 @Entity
 @Table(name = "lists")
-public class List {
+public class UserList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(255)")
     private ListType listType;
 //    private ArrayList<Category> listCategories;
 //    private HashMap<User, ListRole> listUsersWithRoles;
 
-    public List(String name, ListType listType, User user) {
+    public UserList(String name, ListType listType, User user) {
         this.id = null;
         this.name = name;
         this.listType = listType;
@@ -32,7 +30,8 @@ public class List {
         //this.listUsersWithRoles = new HashMap<>();
         //listUsersWithRoles.put(user, ListRole.OWNER);
     }
-    public List(Integer id, String name, String listType) {
+
+    public UserList(Integer id, String name, String listType) {
         this.id = id;
         this.name = name;
         this.listType = ListType.fromString(listType);
@@ -40,13 +39,13 @@ public class List {
         //this.listUsersWithRoles = new HashMap<>();
     }
 
-    public List() {
+    public UserList() {
         this.id = null;
-        this.name =null;
+        this.name = null;
         this.listType = null;
     }
 
-//    public void addUserAndHisRoleToTheList(User user, String userRole) {
+    //    public void addUserAndHisRoleToTheList(User user, String userRole) {
 //        this.listUsersWithRoles.put(user, ListRole.fromString(userRole));
 //    }
     public String getName() {
@@ -60,7 +59,8 @@ public class List {
     public ListType getListType() {
         return listType;
     }
-//    public ListRole getUserRoleInTheList(User user) {
+
+    //    public ListRole getUserRoleInTheList(User user) {
 //        return this.listUsersWithRoles.get(user);
 //    }
 //    public HashMap<User, ListRole> getListOfUsersWithTheirRoles() {
@@ -88,7 +88,17 @@ public class List {
         }
         return -1;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
+   public void setName(String name) {
+        this.name = name;
+   }
+   public void setListType(ListType listType) {
+        this.listType = listType;
+   }
+
+
 }

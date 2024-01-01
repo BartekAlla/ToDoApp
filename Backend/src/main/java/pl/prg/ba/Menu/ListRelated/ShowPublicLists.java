@@ -15,7 +15,7 @@ public class ShowPublicLists {
         String sql = "SELECT " +
                 "    l.id AS list_id," +
                 "    l.name AS list_name," +
-                "    l.type AS list_type," +
+                "    l.list_type AS list_type," +
                 "    u.name AS owner_name," +
                 "    u.surname AS owner_surname " +
                 "FROM" +

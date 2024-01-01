@@ -4,7 +4,7 @@ package pl.prg.ba.Creator;
 import pl.prg.ba.Enums.List.ListRole;
 import pl.prg.ba.Enums.List.ListType;
 import pl.prg.ba.Management.ListManagement;
-import pl.prg.ba.Model.List;
+import pl.prg.ba.Model.UserList;
 import pl.prg.ba.Model.User;
 import pl.prg.ba.PostgreSQL.DatabaseConnection;
 import java.sql.PreparedStatement;
@@ -12,14 +12,14 @@ import java.sql.SQLException;
 
 public class ListCreator {
     public static void createNewList(String name, ListType listType, User user) {
-        List newList = new List(name, listType, user);
+        UserList newList = new UserList(name, listType, user);
         ListManagement.addList(newList);
         addListToDB(newList, user);
-        newList.setId(List.getListIDByName(name));
+        newList.setId(UserList.getListIDByName(name));
         //user.addList(newList);
     }
 
-    private static void addListToDB(List list, User user) {
+    private static void addListToDB(UserList list, User user) {
         String sql = "INSERT INTO lists (name, type) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {
             preparedStatement.setString(1, list.getName());
@@ -36,8 +36,8 @@ public class ListCreator {
         }
     }
 
-    private static void addListUserConstraint(List list, User user) {
-        int listId = List.getListIDByName(list.getName());
+    private static void addListUserConstraint(UserList list, User user) {
+        int listId = UserList.getListIDByName(list.getName());
         int userId = user.getUserIDByEmail(user.getEmail());
         String sql = "INSERT INTO users_lists (userid, listid, userrole) VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {

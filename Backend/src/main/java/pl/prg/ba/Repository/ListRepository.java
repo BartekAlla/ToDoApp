@@ -1,4 +1,8 @@
 package pl.prg.ba.Repository;
 
-public interface ListRepository {
-}
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.prg.ba.Model.UserList;
+
+
+
+public interface ListRepository extends JpaRepository<UserList, Integer> { }

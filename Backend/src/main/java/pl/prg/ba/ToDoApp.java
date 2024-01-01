@@ -1,10 +1,9 @@
 package pl.prg.ba;
 
-import pl.prg.ba.Enums.User.Gender;
 import pl.prg.ba.Management.ListManagement;
 import pl.prg.ba.Management.UserManagement;
 import pl.prg.ba.Menu.MainMenu.MainMenu;
-import pl.prg.ba.Model.List;
+import pl.prg.ba.Model.UserList;
 import pl.prg.ba.Model.User;
 import pl.prg.ba.PostgreSQL.DatabaseConnection;
 
@@ -63,8 +62,8 @@ public class ToDoApp {
                 while (resultSet.next()) {
                     int id = resultSet.getInt("id");
                     String name = resultSet.getString("name");
-                    String type = resultSet.getString("type");
-                    ListManagement.addList(new List(id, name, type));
+                    String type = resultSet.getString("list_type");
+                    ListManagement.addList(new UserList(id, name, type));
                 }
             }
         } catch (SQLException e) {

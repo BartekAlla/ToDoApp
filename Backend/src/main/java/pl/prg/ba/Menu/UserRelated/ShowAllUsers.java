@@ -2,16 +2,11 @@ package pl.prg.ba.Menu.UserRelated;
 
 
 
-import pl.prg.ba.Management.ListManagement;
-import pl.prg.ba.Management.UserManagement;
-import pl.prg.ba.Model.List;
-import pl.prg.ba.Model.User;
 import pl.prg.ba.PostgreSQL.DatabaseConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
 
 public class ShowAllUsers {
     public static void display() {

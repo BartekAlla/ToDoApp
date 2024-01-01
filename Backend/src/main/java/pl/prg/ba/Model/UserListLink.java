@@ -11,5 +11,7 @@ public class UserListLink {
     private Integer id;
     private Integer userId;
     private Integer listID;
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(255)")
     private ListRole userListRole;
 }

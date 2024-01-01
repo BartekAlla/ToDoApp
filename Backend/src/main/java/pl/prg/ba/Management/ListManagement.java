@@ -1,18 +1,18 @@
 package pl.prg.ba.Management;
 
 
-import pl.prg.ba.Model.List;
+import pl.prg.ba.Model.UserList;
 
 import java.util.HashMap;
 
 public class ListManagement {
-    private static HashMap<Integer, List> lists = new HashMap<>();
+    private static HashMap<Integer, UserList> lists = new HashMap<>();
 
-    public static HashMap<Integer, List> getLists() {
+    public static HashMap<Integer, UserList> getLists() {
         return lists;
     }
 
-    public static void addList(List newList) {
+    public static void addList(UserList newList) {
         lists.put(newList.getId(), newList);
         System.out.println("New list with name - " + newList.getName() + ", created!");
     }
@@ -22,7 +22,7 @@ public class ListManagement {
     public static void deleteList(int listID) {
         lists.remove(listID);
     }
-    public static List getListByID(int id) {
+    public static UserList getListByID(int id) {
         return getLists().get(id);
     }
 }
