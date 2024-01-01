@@ -5,4 +5,6 @@ mat-sidenav {
   width: 200px;
   background-color: #eee;
 }
-
+.example-spacer {
+  flex: 1 1 auto;
+}

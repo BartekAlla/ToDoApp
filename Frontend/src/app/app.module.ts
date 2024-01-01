@@ -11,18 +11,16 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule} from "@angular/forms";
 import { HomeComponent } from './home/home.component';
 import {MatListModule} from "@angular/material/list";
-import { ShowAllListsComponent } from './show-all-lists/show-all-lists.component';
-import { ShowAllUsersComponent } from './show-all-users/show-all-users.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import {MatCardModule} from "@angular/material/card";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolnavbarComponent,
     HomeComponent,
-    ShowAllListsComponent,
-    ShowAllUsersComponent,
     SignInComponent,
     SignUpComponent
   ],
@@ -35,7 +33,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatIconModule,
     MatSidenavModule,
     FormsModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
