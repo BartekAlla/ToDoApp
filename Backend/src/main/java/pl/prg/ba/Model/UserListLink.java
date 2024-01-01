@@ -9,6 +9,7 @@ public class UserListLink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private Integer userId;
     private Integer listID;
     @Enumerated(EnumType.STRING)

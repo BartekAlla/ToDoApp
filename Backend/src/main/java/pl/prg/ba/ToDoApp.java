@@ -25,7 +25,7 @@ public class ToDoApp {
 
     private void initObjects() {
         initCurrentUser();
-        initUsers();
+        //initUsers();
         initLists();
         //initUserListConnections();
     }
@@ -35,25 +35,25 @@ public class ToDoApp {
     }
 
 
-    private void initUsers() {
-        String sql = "SELECT * FROM users";
-        try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    int id = resultSet.getInt("id");
-                    String name = resultSet.getString("name");
-                    String surname = resultSet.getString("surname");
-                    String gender = resultSet.getString("gender");
-                    int age = resultSet.getInt("age");
-                    String email = resultSet.getString("email");
-                    String password = resultSet.getString("password");
-                    UserManagement.addUser(new User(id, name, surname, gender, age, email, password));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void initUsers() {
+//        String sql = "SELECT * FROM users";
+//        try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {
+//            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+//                while (resultSet.next()) {
+//                    int id = resultSet.getInt("id");
+//                    String name = resultSet.getString("name");
+//                    String surname = resultSet.getString("surname");
+//                    String gender = resultSet.getString("gender");
+//                    int age = resultSet.getInt("age");
+//                    String email = resultSet.getString("email");
+//                    String password = resultSet.getString("password");
+//                    UserManagement.addUser(new User(id, name, surname, gender, age, email, password));
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void initLists() {
         String sql = "SELECT * FROM lists";
