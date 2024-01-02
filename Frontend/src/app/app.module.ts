@@ -6,16 +6,18 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from '@angular/material/icon';
-import { ToolnavbarComponent } from './toolnavbar/toolnavbar.component';
+import { ToolnavbarComponent } from './Component/toolnavbar/toolnavbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule} from "@angular/forms";
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './Component/home/home.component';
 import {MatListModule} from "@angular/material/list";
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
-import { ListsComponent } from './lists/lists.component';
+import { UserListComponent } from './Component/user-list/user-list.component';
+import { UserFormComponent } from './Component/user-form/user-form.component';
+import {HttpClientModule} from "@angular/common/http";
+import {UserService} from "./Service/user-service.service";
+
 
 
 @NgModule({
@@ -23,9 +25,8 @@ import { ListsComponent } from './lists/lists.component';
     AppComponent,
     ToolnavbarComponent,
     HomeComponent,
-    SignInComponent,
-    SignUpComponent,
-    ListsComponent
+    UserListComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,8 +40,9 @@ import { ListsComponent } from './lists/lists.component';
     MatListModule,
     MatCardModule,
     MatTabsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
