@@ -15,7 +15,6 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
-import { UserListComponent } from './user-list/user-list.component';
 import { ListsComponent } from './lists/lists.component';
 
 
@@ -26,7 +25,6 @@ import { ListsComponent } from './lists/lists.component';
     HomeComponent,
     SignInComponent,
     SignUpComponent,
-    UserListComponent,
     ListsComponent
   ],
   imports: [
