@@ -21,7 +21,7 @@ public class User {
     private Integer age;
     private String email;
     private String password;
-//    private ArrayList<List> userLists;
+
 
     //public User(String name, String surname, Gender gender, Integer age, String email, String password) {
     public User(String name, String surname, String gender, Integer age, String email, String password) {
@@ -56,6 +56,7 @@ public class User {
         this.password = null;
         // this.userLists = new ArrayList<>();
     }
+
     public String getEmail() {
         return email;
     }
@@ -71,13 +72,6 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-//    public ArrayList<List> getUserLists() {
-//        return userLists;
-//    }
-
-//    public void addList(List newList) {
-//        this.userLists.add(newList);
-//    }
 
     public String getSurname() {
         return surname;
