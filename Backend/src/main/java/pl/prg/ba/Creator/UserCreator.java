@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UserCreator {
-    public static void createNewUser(String name, String surname, Gender gender, Integer age, String email, String password) {
+    public static void createNewUser(String name, String surname, String gender, Integer age, String email, String password) {
         User newUser = new User(name, surname, gender, age, email, password);
         UserManagement.addUser(newUser);
         addUserToDB(newUser);
@@ -21,7 +21,8 @@ public class UserCreator {
         try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {
             preparedStatement.setString(1, newUser.getName());
             preparedStatement.setString(2, newUser.getSurname());
-            preparedStatement.setString(3, newUser.getGender().getUserGender());
+            //preparedStatement.setString(3, newUser.getGender().getUserGender());
+            preparedStatement.setString(3, newUser.getGender());
             preparedStatement.setInt(4, newUser.getAge());
             preparedStatement.setString(5, newUser.getEmail());
             preparedStatement.setString(6, newUser.getPassword());

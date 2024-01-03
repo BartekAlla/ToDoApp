@@ -8,7 +8,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from '@angular/material/icon';
 import { ToolnavbarComponent } from './Component/toolnavbar/toolnavbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {FormsModule} from "@angular/forms";
 import { HomeComponent } from './Component/home/home.component';
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
@@ -17,7 +16,12 @@ import { UserListComponent } from './Component/user-list/user-list.component';
 import { UserFormComponent } from './Component/user-form/user-form.component';
 import {HttpClientModule} from "@angular/common/http";
 import {UserService} from "./Service/user-service.service";
-
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UserLoginComponent } from './Component/user-login/user-login.component';
+import { PublicListsComponent } from './Component/public-lists/public-lists.component';
 
 
 @NgModule({
@@ -27,6 +31,8 @@ import {UserService} from "./Service/user-service.service";
     HomeComponent,
     UserListComponent,
     UserFormComponent,
+    UserLoginComponent,
+    PublicListsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,11 @@ import {UserService} from "./Service/user-service.service";
     MatListModule,
     MatCardModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -8,8 +8,8 @@ import pl.prg.ba.Services.UserService;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/users")
 public class UserController {
     @Autowired

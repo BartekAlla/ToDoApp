@@ -19,15 +19,17 @@ public class User {
     private Integer id;
     private String name;
     private String surname;
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
-    private Gender gender;
+//    private Gender gender;
+    private String gender;
     private Integer age;
     private String email;
     private String password;
 //    private ArrayList<List> userLists;
 
-    public User(String name, String surname, Gender gender, Integer age, String email, String password) {
+    //public User(String name, String surname, Gender gender, Integer age, String email, String password) {
+    public User(String name, String surname, String gender, Integer age, String email, String password) {
         this.id = null;
         this.name = name;
         this.surname = surname;
@@ -129,7 +131,8 @@ public class User {
         this.id = id;
     }
 
-    public Gender getGender() {
+    //public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
@@ -146,7 +149,7 @@ public class User {
         this.surname = surname;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

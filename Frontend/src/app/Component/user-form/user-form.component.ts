@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from "../../Model/user";
 import {UserService} from "../../Service/user-service.service";
+
 
 @Component({
   selector: 'app-user-form',
@@ -17,6 +18,7 @@ export class UserFormComponent {
     private router: Router,
     private userService: UserService) {
     this.user = new User();
+
   }
 
   onSubmit() {

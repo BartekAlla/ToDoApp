@@ -1,9 +1,11 @@
 package pl.prg.ba;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import pl.prg.ba.Enums.User.Gender;
-import pl.prg.ba.Model.User;
+
+
+import java.util.stream.Stream;
 
 
 @SpringBootApplication
@@ -12,4 +14,6 @@ public class Main {
         SpringApplication.run(Main.class, args);
         new ToDoApp().run();
     }
+
+
 }
