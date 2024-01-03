@@ -9,14 +9,4 @@ public enum Gender {
         this.gender = gender;
     }
 
-    public String getUserGender() {
-        return gender;
-    }
-    public static Gender fromString(String value) {
-        return switch (value.toLowerCase()) {
-            case "male" -> MALE;
-            case "female" -> FEMALE;
-            default -> throw new IllegalArgumentException("Unsupported gender: " + value);
-        };
-    }
 }

@@ -1,15 +1,10 @@
 package pl.prg.ba.Model;
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import pl.prg.ba.Enums.User.Gender;
-import pl.prg.ba.PostgreSQL.DatabaseConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 @Entity
 @Table(name = "users")
@@ -61,40 +56,6 @@ public class User {
         this.password = null;
         // this.userLists = new ArrayList<>();
     }
-
-
-//    public List getUserListByID(int id) {
-//        for (List list : userLists) {
-//            if (list.getId() == id) {
-//                return list;
-//            }
-//        }
-//        return null;
-//    }
-
-//    public void addListToUser(List list) {
-//        this.userLists.add(list);
-//    }
-
-    public int getUserIDByEmail(String email) {
-        String sql = "SELECT id FROM users WHERE email = ?";
-        try (PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql)) {
-            preparedStatement.setString(1, email);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    return resultSet.getInt("id");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
-
-//    public void deleteList(int id) {
-//        this.userLists.remove(getUserListByID(id));
-//    }
-
     public String getEmail() {
         return email;
     }
