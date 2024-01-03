@@ -1,6 +1,7 @@
 package pl.prg.ba.Model;
 
 import jakarta.persistence.*;
+import pl.prg.ba.Enums.User.Gender;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,14 +17,14 @@ public class User {
     private String surname;
     //@Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
-//    private Gender gender;
     private String gender;
+//    private String gender;
     private Integer age;
     private String email;
     private String password;
 
 
-    //public User(String name, String surname, Gender gender, Integer age, String email, String password) {
+
     public User(String name, String surname, String gender, Integer age, String email, String password) {
         this.id = null;
         this.name = name;

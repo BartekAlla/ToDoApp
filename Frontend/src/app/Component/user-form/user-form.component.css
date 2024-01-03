@@ -1,3 +1,21 @@
-.example-container mat-form-field + mat-form-field {
-  margin-left: 8px;
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -75px; /* Adjust the margin-top as needed */
+}
+
+/* You can adjust the styles for the mat-form-field and other elements as needed */
+.mat-form-field {
+  margin-bottom: 16px; /* Adjust the margin as needed */
+}
+
+.mat-card-actions {
+  margin-top: 16px; /* Adjust the margin as needed */
+}
+
+button {
+  width: 100%;
 }

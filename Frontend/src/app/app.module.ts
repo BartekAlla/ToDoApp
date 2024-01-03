@@ -22,6 +22,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserLoginComponent } from './Component/user-login/user-login.component';
 import { PublicListsComponent } from './Component/public-lists/public-lists.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { PublicListsComponent } from './Component/public-lists/public-lists.comp
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-
+    MatStepperModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

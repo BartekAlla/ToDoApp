@@ -1,73 +1,40 @@
-<div class="card my-5">
-  <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-      <div class="form-group">
-        <label for="id">Id</label>
-        <input type="number" [(ngModel)]="user.id"
-               class="form-control"
-               id="id"
-               name="id"
-               placeholder="Enter your id"
-               required #id="ngModel">
-      </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" [(ngModel)]="user.name"
-               class="form-control"
-               id="name"
-               name="name"
-               placeholder="Enter your name"
-               required #name="ngModel">
-      </div>
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input type="text" [(ngModel)]="user.surname"
-               class="form-control"
-               id="surname"
-               name="surname"
-               placeholder="Enter your surname"
-               required #surname="ngModel">
-      </div>
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <input type="text" [(ngModel)]="user.gender"
-               class="form-control"
-               id="gender"
-               name="gender"
-               placeholder="Enter your gender"
-               required #gender="ngModel">
-      </div>
-      <div class="form-group">
-        <label for="age">Age</label>
-        <input type="number" [(ngModel)]="user.age"
-               class="form-control"
-               id="age"
-               name="age"
-               placeholder="Enter your age"
-               required #gender="ngModel">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" [(ngModel)]="user.email"
-               class="form-control"
-               id="email"
-               name="email"
-               placeholder="Enter your email"
-               required #email="ngModel">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="text" [(ngModel)]="user.password"
-               class="form-control"
-               id="password"
-               name="password"
-               placeholder="Enter your password"
-               required #password="ngModel">
-      </div>
-      <button type="submit" [disabled]="!userForm.form.valid"
-              class="btn btn-info">Submit</button>
-    </form>
 
+<form class="signupForm" (ngSubmit)="onSubmit()" #userForm="ngForm" >
+  <mat-form-field>
+    <mat-label>Id</mat-label>
+    <input matInput type="number" [(ngModel)]="user.id" id="id" name="id" placeholder="Enter your id" required #id="ngModel">
+  </mat-form-field>
 
-  </div>
-</div>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" [(ngModel)]="user.name" id="name" name="name" placeholder="Enter your name" required #name="ngModel">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Surname</mat-label>
+    <input matInput type="text" [(ngModel)]="user.surname" id="surname" name="surname" placeholder="Enter your surname" required #surname="ngModel">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <input matInput type="text" [(ngModel)]="user.gender" id="gender" name="gender" placeholder="Enter your gender" required #gender="ngModel">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input matInput type="number" [(ngModel)]="user.age" id="age" name="age" placeholder="Enter your age" required #age="ngModel">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="text" [(ngModel)]="user.email" id="email" name="email" placeholder="Enter your email" required #email="ngModel">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput type="text" [(ngModel)]="user.password" id="password" name="password" placeholder="Enter your password" required #password="ngModel">
+  </mat-form-field>
+  <mat-card-actions>
+    <button mat-raised-button type="submit" [disabled]="!userForm.form.valid" color="primary">Sign Up</button>
+  </mat-card-actions>
+</form>

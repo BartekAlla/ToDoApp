@@ -9,4 +9,7 @@ public enum Gender {
         this.gender = gender;
     }
 
+    public String getGender() {
+        return gender;
+    }
 }
