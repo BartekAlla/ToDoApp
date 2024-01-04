@@ -4,16 +4,16 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-top: -75px; /* Adjust the margin-top as needed */
+  margin-top: -75px;
 }
 
-/* You can adjust the styles for the mat-form-field and other elements as needed */
+
 .mat-form-field {
-  margin-bottom: 16px; /* Adjust the margin as needed */
+  margin-bottom: 16px;
 }
 
 .mat-card-actions {
-  margin-top: 16px; /* Adjust the margin as needed */
+  margin-top: 16px;
 }
 
 button {
