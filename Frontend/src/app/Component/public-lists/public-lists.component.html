@@ -1,1 +1,20 @@
-<p>public-lists works!</p>
+<div>
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">UserList Type</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let list of lists">
+        <td>{{ list.id }}</td>
+        <td>{{ list.name }}</td>
+        <td>{{ list.listType }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

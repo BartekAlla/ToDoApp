@@ -12,17 +12,20 @@ import { HomeComponent } from './Component/home/home.component';
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
-import { UserListComponent } from './Component/user-list/user-list.component';
+import { AllUsersComponent } from './Component/all-users/all-users.component';
 import { UserFormComponent } from './Component/user-form/user-form.component';
 import {HttpClientModule} from "@angular/common/http";
-import {UserService} from "./Service/user-service.service";
+import {UserService} from "./Service/User/user.service";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserLoginComponent } from './Component/user-login/user-login.component';
-import { PublicListsComponent } from './Component/public-lists/public-lists.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import {PublicListsComponent} from "./Component/public-lists/public-lists.component";
+import { FooterComponent } from './Component/footer/footer.component';
+import {UserListService} from "./Service/UserList/user-list.service";
+
 
 
 @NgModule({
@@ -30,10 +33,11 @@ import {MatStepperModule} from '@angular/material/stepper';
     AppComponent,
     ToolnavbarComponent,
     HomeComponent,
-    UserListComponent,
+    AllUsersComponent,
     UserFormComponent,
     UserLoginComponent,
     PublicListsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSelectModule,
     MatStepperModule
   ],
-  providers: [UserService],
+  providers: [UserService, UserListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
