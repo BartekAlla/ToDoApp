@@ -13,6 +13,8 @@ export class UserFormComponent {
 
   user: User;
   hide = true;
+  passwordType: string = 'password';
+
 
   constructor(
     private route: ActivatedRoute,
@@ -29,10 +31,15 @@ export class UserFormComponent {
   gotoUserList() {
     this.router.navigate(['/users']);
   }
+
   isLinear = false;
 
-  toggleLinear() {
-    this.isLinear = !this.isLinear;
+// Inside your component class
+  togglePasswordVisibility(event: Event) {
+    event.preventDefault();
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.hide = !this.hide;
   }
+
 
 }
