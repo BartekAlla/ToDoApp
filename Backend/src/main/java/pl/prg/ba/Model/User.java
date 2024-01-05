@@ -1,5 +1,6 @@
 package pl.prg.ba.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import pl.prg.ba.Enums.User.Gender;
 
@@ -13,7 +14,8 @@ import java.time.LocalDate;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @JsonIgnore
+    private Long id;
     private String name;
     private String surname;
     @Enumerated(EnumType.STRING)
@@ -68,11 +70,11 @@ public class User {
     }
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

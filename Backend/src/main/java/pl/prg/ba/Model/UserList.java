@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class UserList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     //@Enumerated(EnumType.STRING)
     @Enumerated(EnumType.STRING)
@@ -26,7 +26,7 @@ public class UserList {
         this.listType = listType;
     }
 
-    public UserList(Integer id, String name, ListType listType) {
+    public UserList(Long id, String name, ListType listType) {
         this.id = id;
         this.name = name;
         this.listType = listType;
@@ -42,7 +42,7 @@ public class UserList {
         return name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -50,7 +50,7 @@ public class UserList {
         return listType;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -5,7 +5,6 @@
     <table>
       <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Surname</th>
         <th scope="col">Gender</th>
@@ -15,7 +14,6 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
-        <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
         <td>{{ user.surname }}</td>
         <td>{{ user.gender  | titlecase   }}</td>
