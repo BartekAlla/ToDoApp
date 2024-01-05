@@ -25,6 +25,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {PublicListsComponent} from "./Component/public-lists/public-lists.component";
 import { FooterComponent } from './Component/footer/footer.component';
 import {UserListService} from "./Service/UserList/user-list.service";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 
@@ -55,7 +57,10 @@ import {UserListService} from "./Service/UserList/user-list.service";
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [UserService, UserListService],
   bootstrap: [AppComponent]

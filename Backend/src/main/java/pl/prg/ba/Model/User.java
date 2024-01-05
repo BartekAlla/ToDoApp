@@ -6,6 +6,7 @@ import pl.prg.ba.Enums.User.Gender;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -15,9 +16,9 @@ public class User {
     private Integer id;
     private String name;
     private String surname;
-    //@Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
-    private String gender;
+    private Gender gender;
 //    private String gender;
     private Integer age;
     private String email;
@@ -25,7 +26,7 @@ public class User {
 
 
 
-    public User(String name, String surname, String gender, Integer age, String email, String password) {
+    public User(String name, String surname, Gender gender, Integer age, String email, String password) {
         this.id = null;
         this.name = name;
         this.surname = surname;
@@ -33,19 +34,8 @@ public class User {
         this.age = age;
         this.email = email;
         this.password = password;
-        // this.userLists = new ArrayList<>();
     }
 
-//    public User(Integer id, String name, String surname, String gender, Integer age, String email, String password) {
-//        this.id = id;
-//        this.name = name;
-//        this.surname = surname;
-//        this.gender = Gender.fromString(gender);
-//        this.age = age;
-//        this.email = email;
-//        this.password = password;
-//        // this.userLists = new ArrayList<>();
-//    }
 
     public User() {
         this.id = null;
@@ -55,7 +45,6 @@ public class User {
         this.age = null;
         this.email = null;
         this.password = null;
-        // this.userLists = new ArrayList<>();
     }
 
     public String getEmail() {
@@ -88,7 +77,7 @@ public class User {
     }
 
     //public Gender getGender() {
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
@@ -105,7 +94,7 @@ public class User {
         this.surname = surname;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

@@ -32,7 +32,6 @@ export class UserFormComponent {
     this.router.navigate(['/users']);
   }
 
-  isLinear = false;
 
 // Inside your component class
   togglePasswordVisibility(event: Event) {

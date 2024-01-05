@@ -1,46 +1,95 @@
 <form class="signupForm" (ngSubmit)="onSubmit()" #userForm="ngForm">
   <mat-card class="form-card">
-    <mat-form-field  class="form-input">
+    <mat-form-field class="form-input">
       <mat-label>Email</mat-label>
-      <input matInput type="text" [(ngModel)]="user.email" id="email" name="email" placeholder="Enter your email" required
-             #email="ngModel">
+      <input matInput type="email"
+             [(ngModel)]="user.email"
+             id="email"
+             name="email"
+             placeholder="Enter your email"
+             required
+             #email="ngModel"
+             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$">
+
     </mat-form-field>
-    <mat-form-field  class="form-input">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+      <div *ngIf="email.errors?.['pattern']">Invalid email format.</div>
+    </div>
+    <mat-form-field class="form-input">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="passwordType" [(ngModel)]="user.password" id="password" name="password"
-             placeholder="Enter your password" required #password="ngModel">
-      <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" [attr.aria-label]="'Hide password'"
+      <input matInput
+             [type]="passwordType"
+             [(ngModel)]="user.password"
+             id="password"
+             name="password"
+             placeholder="Enter your password"
+             required
+             #password="ngModel"
+             pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_+=<>?]).{8,}$">
+      <button mat-icon-button matSuffix
+              (click)="togglePasswordVisibility($event)"
+              [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide">
         <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
     </mat-form-field>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+      <div *ngIf="password.errors?.['pattern']">Password must have at least 8 characters, including at least one
+        uppercase letter, one lowercase letter, one digit, and one special character.
+      </div>
+    </div>
     <mat-form-field class="form-input">
       <mat-label>Name</mat-label>
-      <input matInput type="text" [(ngModel)]="user.name" id="name" name="name" placeholder="Enter your name" required
+      <input matInput type="text"
+             [(ngModel)]="user.name"
+             id="name"
+             name="name"
+             placeholder="Enter your name"
+             required
              #name="ngModel">
     </mat-form-field>
 
-    <mat-form-field  class="form-input">
+    <mat-form-field class="form-input">
       <mat-label>Surname</mat-label>
-      <input matInput type="text" [(ngModel)]="user.surname" id="surname" name="surname" placeholder="Enter your surname"
+      <input matInput type="text"
+             [(ngModel)]="user.surname"
+             id="surname" name="surname"
+             placeholder="Enter your surname"
              required #surname="ngModel">
     </mat-form-field>
-    <mat-form-field  class="form-input">
+
+    <mat-form-field class="form-input">
       <mat-label>Gender</mat-label>
-      <mat-select [(ngModel)]="user.gender" id="gender" name="gender" placeholder="Select your gender" required
+      <mat-select [(ngModel)]="user.gender"
+                  id="gender"
+                  name="gender"
+                  placeholder="Select your gender"
+                  required
                   #gender="ngModel">
-        <mat-option value="male">Male</mat-option>
-        <mat-option value="female">Female</mat-option>
-        <mat-option value="other">Other</mat-option>
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+        <mat-option value="Other">Other</mat-option>
       </mat-select>
     </mat-form-field>
-
-
-    <mat-form-field  class="form-input">
-      <mat-label>Age</mat-label>
-      <input matInput type="number" [(ngModel)]="user.age" id="age" name="age" placeholder="Enter your age" required
-             #age="ngModel">
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+
+
+<!--    <mat-form-field class="form-input">-->
+<!--      <mat-label>Age</mat-label>-->
+<!--      <input matInput type="number"-->
+<!--             [(ngModel)]="user.age"-->
+<!--             id="age"-->
+<!--             name="age"-->
+<!--             placeholder="Enter your age"-->
+<!--             required-->
+<!--             #age="ngModel">-->
+<!--    </mat-form-field>-->
     <mat-card-actions>
       <button mat-raised-button type="submit" [disabled]="!userForm.form.valid" color="primary">Sign Up</button>
     </mat-card-actions>
