@@ -12,7 +12,7 @@
       <tr *ngFor="let list of lists">
         <td>{{ list.id }}</td>
         <td>{{ list.name }}</td>
-        <td>{{ list.listType }}</td>
+        <td>{{ list.listType | titlecase  }}</td>
       </tr>
       </tbody>
     </table>

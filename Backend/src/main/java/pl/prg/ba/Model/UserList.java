@@ -16,16 +16,17 @@ public class UserList {
     private Integer id;
     private String name;
     //@Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
-    private String listType;
+    private ListType listType;
 
-    public UserList(String name, String listType, User user) {
+    public UserList(String name, ListType listType, User user) {
         this.id = null;
         this.name = name;
         this.listType = listType;
     }
 
-    public UserList(Integer id, String name, String listType) {
+    public UserList(Integer id, String name, ListType listType) {
         this.id = id;
         this.name = name;
         this.listType = listType;
@@ -45,7 +46,7 @@ public class UserList {
         return id;
     }
 
-    public String getListType() {
+    public ListType getListType() {
         return listType;
     }
 
@@ -57,7 +58,7 @@ public class UserList {
         this.name = name;
     }
 
-    public void setListType(String listType) {
+    public void setListType(ListType listType) {
         this.listType = listType;
     }
 

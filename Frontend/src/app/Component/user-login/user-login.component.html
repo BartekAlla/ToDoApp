@@ -1,1 +1,46 @@
-<p>user-login works!</p>
+<form class="signinForm" (ngSubmit)="onSubmit()" #userFormLogin="ngForm">
+  <mat-card class="form-card">
+    <mat-form-field class="form-input">
+      <mat-label>Email</mat-label>
+      <input matInput type="email"
+             [(ngModel)]="user.email"
+             id="email"
+             name="email"
+             placeholder="Enter your email"
+             required
+             #email="ngModel"
+             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$">
+
+    </mat-form-field>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+      <div *ngIf="email.errors?.['pattern']">Invalid email format.</div>
+    </div>
+    <mat-form-field class="form-input">
+      <mat-label>Enter your password</mat-label>
+      <input matInput
+             [type]="passwordType"
+             [(ngModel)]="user.password"
+             id="password"
+             name="password"
+             placeholder="Enter your password"
+             required
+             #password="ngModel"
+             pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_+=<>?]).{8,}$">
+      <button mat-icon-button matSuffix
+              (click)="togglePasswordVisibility($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+      <div *ngIf="password.errors?.['pattern']">Password must have at least 8 characters, including at least one
+        uppercase letter, one lowercase letter, one digit, and one special character.
+      </div>
+    </div>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" [disabled]="!userFormLogin.form.valid" color="primary">Sign In</button>
+    </mat-card-actions>
+  </mat-card>
+
+</form>
