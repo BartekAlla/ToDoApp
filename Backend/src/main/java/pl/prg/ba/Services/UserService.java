@@ -53,5 +53,4 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    // Other business logic related to users
 }

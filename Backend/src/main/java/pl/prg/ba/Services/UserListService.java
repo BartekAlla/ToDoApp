@@ -57,5 +57,4 @@ public class UserListService {
         return userListRepository.findPublicLists();
     }
 
-    // Other business logic related to lists
 }
