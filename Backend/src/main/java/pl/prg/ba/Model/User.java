@@ -25,7 +25,7 @@ public class User {
     @JsonIgnore
     @OneToMany
     @JoinColumn(name = "user_id")
-    private Set<UserList> userLists;
+    private Set<UserListLink> userListLinks;
 
 
 //    public User(String name, String surname, Gender gender, Integer age, String email, String password) {
@@ -109,11 +109,12 @@ public class User {
 
     }
 
-    public Set<UserList> getUserLists() {
-        return userLists;
+
+    public Set<UserListLink> getUserListLinks() {
+        return userListLinks;
     }
 
-    public void setUserLists(Set<UserList> userLists) {
-        this.userLists = userLists;
+    public void setUserListLinks(Set<UserListLink> userListLinks) {
+        this.userListLinks = userListLinks;
     }
 }

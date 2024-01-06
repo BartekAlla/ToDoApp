@@ -18,12 +18,10 @@ public class UserList {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
     private ListType listType;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(255)")
-    private ListRole userRole;
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "list_id")
+    private Set<UserListLink> listLinks;
     @JsonIgnore
     @OneToMany
     @JoinColumn(name = "list_id")
@@ -71,27 +69,20 @@ public class UserList {
         this.listType = listType;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public ListRole getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(ListRole userRole) {
-        this.userRole = userRole;
-    }
-
     public Set<Category> getListCategories() {
         return listCategories;
     }
 
     public void setListCategories(Set<Category> listCategories) {
         this.listCategories = listCategories;
+    }
+
+
+    public Set<UserListLink> getListLinks() {
+        return listLinks;
+    }
+
+    public void setListLinks(Set<UserListLink> listLinks) {
+        this.listLinks = listLinks;
     }
 }

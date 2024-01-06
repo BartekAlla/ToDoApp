@@ -2,41 +2,25 @@ package pl.prg.ba.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import pl.prg.ba.Model.User;
 import pl.prg.ba.Model.UserList;
 import pl.prg.ba.Repository.UserListRepository;
 import pl.prg.ba.Repository.UserRepository;
-
-
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class UserListService {
 
     private UserListRepository userListRepository;
-    private final UserRepository userRepository;
 
     @Autowired
-    public UserListService(UserListRepository userListRepository, UserRepository userRepository) {
+    public UserListService(UserListRepository userListRepository) {
         this.userListRepository = userListRepository;
-        this.userRepository = userRepository;
     }
 
-    public UserList createList(UserList list) {
-        User user = list.getUser();
-        if (user.getId() == null) {
-            throw new IllegalArgumentException("User ID cannot be null");
-        }
-        User existingUser = userRepository.findById(user.getId()).orElse(null);
-
-        if (existingUser != null) {
-            list.setUser(existingUser);
-            return userListRepository.save(list);
-        } else {
-            throw new RuntimeException("User with id " + user.getId() + " not found");
-        }
+    public UserList createList(UserList userList) {
+        return userListRepository.save(userList);
     }
 
     public List<UserList> getAllLists() {
