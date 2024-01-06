@@ -1,8 +1,11 @@
 package pl.prg.ba.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import pl.prg.ba.Enums.List.ListRole;
 import pl.prg.ba.Enums.List.ListType;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "lists")
@@ -21,6 +24,10 @@ public class UserList {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
     private ListRole userRole;
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "list_id")
+    private Set<Category> listCategories;
 
 //    public UserList(String name, ListType listType) {
 //        this.id = null;
@@ -78,5 +85,13 @@ public class UserList {
 
     public void setUserRole(ListRole userRole) {
         this.userRole = userRole;
+    }
+
+    public Set<Category> getListCategories() {
+        return listCategories;
+    }
+
+    public void setListCategories(Set<Category> listCategories) {
+        this.listCategories = listCategories;
     }
 }
