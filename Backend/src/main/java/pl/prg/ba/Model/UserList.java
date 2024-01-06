@@ -1,6 +1,7 @@
 package pl.prg.ba.Model;
 
 import jakarta.persistence.*;
+import pl.prg.ba.Enums.List.ListRole;
 import pl.prg.ba.Enums.List.ListType;
 
 
@@ -13,36 +14,42 @@ import java.sql.SQLException;
 public class UserList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     //@Enumerated(EnumType.STRING)
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
     private ListType listType;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(255)")
+    private ListRole userRole;
 
-    public UserList(String name, ListType listType, User user) {
-        this.id = null;
-        this.name = name;
-        this.listType = listType;
-    }
-
-    public UserList(Long id, String name, ListType listType) {
-        this.id = id;
-        this.name = name;
-        this.listType = listType;
-    }
-
-    public UserList() {
-        this.id = null;
-        this.name = null;
-        this.listType = null;
-    }
+//    public UserList(String name, ListType listType) {
+//        this.id = null;
+//        this.name = name;
+//        this.listType = listType;
+//    }
+//
+//    public UserList(Integer id, String name, ListType listType) {
+//        this.id = id;
+//        this.name = name;
+//        this.listType = listType;
+//    }
+//
+//    public UserList() {
+//        this.id = null;
+//        this.name = null;
+//        this.listType = null;
+//    }
 
     public String getName() {
         return name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -50,7 +57,7 @@ public class UserList {
         return listType;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -62,5 +69,19 @@ public class UserList {
         this.listType = listType;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ListRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(ListRole userRole) {
+        this.userRole = userRole;
+    }
 }

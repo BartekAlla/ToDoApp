@@ -4,18 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import pl.prg.ba.Enums.User.Gender;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
-    private Long id;
+    private Integer id;
     private String name;
     private String surname;
     @Enumerated(EnumType.STRING)
@@ -25,29 +22,32 @@ public class User {
     private Integer age;
     private String email;
     private String password;
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private Set<UserList> userLists;
 
 
-
-    public User(String name, String surname, Gender gender, Integer age, String email, String password) {
-        this.id = null;
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
-        this.age = age;
-        this.email = email;
-        this.password = password;
-    }
-
-
-    public User() {
-        this.id = null;
-        this.name = null;
-        this.surname = null;
-        this.gender = null;
-        this.age = null;
-        this.email = null;
-        this.password = null;
-    }
+//    public User(String name, String surname, Gender gender, Integer age, String email, String password) {
+//        this.id = null;
+//        this.name = name;
+//        this.surname = surname;
+//        this.gender = gender;
+//        this.age = age;
+//        this.email = email;
+//        this.password = password;
+//    }
+//
+//
+//    public User() {
+//        this.id = null;
+//        this.name = null;
+//        this.surname = null;
+//        this.gender = null;
+//        this.age = null;
+//        this.email = null;
+//        this.password = null;
+//    }
 
     public String getEmail() {
         return email;
@@ -70,11 +70,11 @@ public class User {
     }
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -107,5 +107,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
 
+    }
+
+    public Set<UserList> getUserLists() {
+        return userLists;
+    }
+
+    public void setUserLists(Set<UserList> userLists) {
+        this.userLists = userLists;
     }
 }
