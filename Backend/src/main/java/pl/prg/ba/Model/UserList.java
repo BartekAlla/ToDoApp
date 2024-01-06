@@ -4,11 +4,6 @@ import jakarta.persistence.*;
 import pl.prg.ba.Enums.List.ListRole;
 import pl.prg.ba.Enums.List.ListType;
 
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 @Entity
 @Table(name = "lists")
 public class UserList {
