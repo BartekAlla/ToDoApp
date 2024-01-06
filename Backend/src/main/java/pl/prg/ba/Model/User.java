@@ -22,7 +22,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
     private Gender gender;
-//    private String gender;
     private Integer age;
     private String email;
     private String password;
