@@ -2,10 +2,14 @@ package pl.prg.ba.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import pl.prg.ba.Enums.List.ListRole;
 
 @Entity
 @Table(name = "user_list_link")
+@Getter
+@Setter
 public class UserListLink {
 
     @Id
@@ -24,36 +28,5 @@ public class UserListLink {
     @Column(columnDefinition = "varchar(255)")
     private ListRole listRole;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public UserList getUserList() {
-        return userList;
-    }
-
-    public void setUserList(UserList userList) {
-        this.userList = userList;
-    }
-
-    public ListRole getListRole() {
-        return listRole;
-    }
-
-    public void setListRole(ListRole listRole) {
-        this.listRole = listRole;
-    }
 
 }

@@ -2,6 +2,8 @@ package pl.prg.ba.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import pl.prg.ba.Enums.User.Gender;
 
 import java.util.Set;
@@ -9,6 +11,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,72 +53,7 @@ public class User {
 //        this.password = null;
 //    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    //public Gender getGender() {
-    public Gender getGender() {
-        return gender;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-
-    }
-
-
-    public Set<UserListLink> getUserListLinks() {
-        return userListLinks;
-    }
-
-    public void setUserListLinks(Set<UserListLink> userListLinks) {
-        this.userListLinks = userListLinks;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
 }

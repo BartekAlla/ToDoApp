@@ -1,9 +1,14 @@
 package pl.prg.ba.Model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import pl.prg.ba.Enums.Taks.TaskStatus;
 @Entity
 @Table(name = "tasks")
+@Getter
+@Setter
+
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,36 +20,4 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public TaskStatus getTaskStatus() {
-        return taskStatus;
-    }
-
-    public void setTaskStatus(TaskStatus taskStatus) {
-        this.taskStatus = taskStatus;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 }
