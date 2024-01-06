@@ -1,6 +1,9 @@
 package pl.prg.ba.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 
 @Entity
@@ -13,7 +16,10 @@ public class Category {
     @ManyToOne
     @JoinColumn(name = "list_id")
     private UserList userList;
-
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "category_id")
+    private Set<Task> categoryTasks;
     public Integer getId() {
         return id;
     }
@@ -36,5 +42,13 @@ public class Category {
 
     public void setUserList(UserList userList) {
         this.userList = userList;
+    }
+
+    public Set<Task> getCategoryTasks() {
+        return categoryTasks;
+    }
+
+    public void setCategoryTasks(Set<Task> categoryTasks) {
+        this.categoryTasks = categoryTasks;
     }
 }
