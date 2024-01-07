@@ -7,15 +7,26 @@ import pl.prg.ba.Repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
+    private static final String EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     public User createUser(User user) {
+        if (!isValidEmail(user.getEmail())) {
+            throw new IllegalArgumentException("Invalid email format");
+        }
         return userRepository.save(user);
+    }
+    private boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
 
