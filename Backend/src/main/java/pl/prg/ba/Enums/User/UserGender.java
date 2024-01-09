@@ -1,12 +1,12 @@
 package pl.prg.ba.Enums.User;
 
-public enum Gender {
+public enum UserGender {
     MALE("Male"),
     FEMALE("Female"),
     OTHER("Other");
     private final String gender;
 
-    Gender(String gender) {
+    UserGender(String gender) {
         this.gender = gender;
     }
 

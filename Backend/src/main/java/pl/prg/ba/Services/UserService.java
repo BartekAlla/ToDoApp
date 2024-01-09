@@ -56,7 +56,7 @@ public class UserService {
     private void setExistingUserData(User existingUser, User userDetails) {
         existingUser.setName(userDetails.getName());
         existingUser.setSurname(userDetails.getSurname());
-        existingUser.setGender(userDetails.getGender());
+        existingUser.setUserGender(userDetails.getUserGender());
         existingUser.setAge(userDetails.getAge());
         existingUser.setEmail(userDetails.getEmail());
         existingUser.setPassword(userDetails.getPassword());

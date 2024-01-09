@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import pl.prg.ba.Enums.User.Gender;
+import pl.prg.ba.Enums.User.UserGender;
+import pl.prg.ba.Enums.User.UserRole;
 
 import java.util.Set;
 
@@ -21,7 +22,11 @@ public class User {
     private String surname;
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255)")
-    private Gender gender;
+    private UserGender userGender;
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(255)")
+    private UserRole userRole;
+
     private Integer age;
     private String email;
     private String password;

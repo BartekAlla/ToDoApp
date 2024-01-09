@@ -1,7 +1,5 @@
 package pl.prg.ba.Enums.List;
 
-import pl.prg.ba.Enums.User.Gender;
-
 public enum ListType {
     PUBLIC("Public"),
     PRIVATE("Private");
