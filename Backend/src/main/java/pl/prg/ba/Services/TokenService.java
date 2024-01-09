@@ -22,6 +22,7 @@ public class TokenService {
     }
 
     public String generateToken(Authentication authentication) {
+
         Instant now = Instant.now();
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

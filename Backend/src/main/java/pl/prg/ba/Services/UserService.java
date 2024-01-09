@@ -21,6 +21,11 @@ public class UserService {
         if (!isValidEmail(user.getEmail())) {
             throw new IllegalArgumentException("Invalid email format");
         }
+        Optional<User> emailEntry = userRepository.findByEmail(user.getEmail());
+        if(emailEntry.isPresent()){
+            throw new IllegalArgumentException("Email already eixsts.");
+        }
+
         return userRepository.save(user);
     }
     private boolean isValidEmail(String email) {
