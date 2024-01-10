@@ -13,12 +13,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.name }}</td>
-        <td>{{ user.surname }}</td>
-        <td>{{ user.gender  | titlecase   }}</td>
-        <td>{{ user.age }}</td>
-        <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+      <tr *ngFor="let userInfo of users">
+        <td>{{ userInfo.name }}</td>
+        <td>{{ userInfo.surname }}</td>
+        <td>{{ userInfo.gender  | titlecase   }}</td>
+        <td>{{ userInfo.age }}</td>
+        <td><a href="mailto:{{ userInfo.email }}">{{ userInfo.email }}</a></td>
       </tr>
       </tbody>
     </table>

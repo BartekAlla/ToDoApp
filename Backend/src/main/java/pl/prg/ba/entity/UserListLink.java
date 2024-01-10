@@ -2,14 +2,14 @@ package pl.prg.ba.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import pl.prg.ba.enums.list.ListRole;
 
 @Entity
 @Table(name = "user_list_link")
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserListLink {
 
     @Id
@@ -18,7 +18,7 @@ public class UserListLink {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserInfo userInfo;
 
     @ManyToOne
     @JoinColumn(name = "list_id")

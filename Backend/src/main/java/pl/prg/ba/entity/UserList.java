@@ -2,16 +2,16 @@ package pl.prg.ba.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import pl.prg.ba.enums.list.ListType;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "lists")
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

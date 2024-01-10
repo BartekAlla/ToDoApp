@@ -2,12 +2,12 @@ package pl.prg.ba.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.prg.ba.entity.User;
+import pl.prg.ba.entity.UserInfo;
 import pl.prg.ba.entity.UserList;
 import pl.prg.ba.entity.UserListLink;
 import pl.prg.ba.repository.UserListLinkRepository;
 import pl.prg.ba.repository.UserListRepository;
-import pl.prg.ba.repository.UserRepository;
+import pl.prg.ba.repository.UserInfoRepository;
 
 
 import java.util.List;
@@ -16,15 +16,15 @@ import java.util.Optional;
 public class UserListLinkService {
     private UserListLinkRepository userListLinkRepository;
     private UserListRepository userListRepository;
-    private UserRepository userRepository;
+    private UserInfoRepository userInfoRepository;
 
     @Autowired
     public UserListLinkService(UserListLinkRepository userListLinkRepository,
                                UserListRepository userListRepository,
-                               UserRepository userRepository) {
+                               UserInfoRepository userInfoRepository) {
         this.userListLinkRepository = userListLinkRepository;
         this.userListRepository = userListRepository;
-        this.userRepository = userRepository;
+        this.userInfoRepository = userInfoRepository;
     }
 
     public UserListLink createUserListLink(UserListLink userListLink) {
@@ -39,14 +39,14 @@ public class UserListLinkService {
 
 
 
-            User user = userListLink.getUser();
-            if (user.getId() == null) {
+            UserInfo userInfo = userListLink.getUserInfo();
+            if (userInfo.getId() == null) {
                 throw new IllegalArgumentException("User ID cannot be null");
             }
-            User existingUser = userRepository.findById(user.getId()).orElse(null);
+            UserInfo existingUserInfo = userInfoRepository.findById(userInfo.getId()).orElse(null);
 
-            if (existingUser != null) {
-                userListLink.setUser(existingUser);
+            if (existingUserInfo != null) {
+                userListLink.setUserInfo(existingUserInfo);
                 return userListLinkRepository.save(userListLink);
             } else {
                 throw new RuntimeException("UserList with id " + userList.getId() + " not found");
@@ -76,7 +76,7 @@ public class UserListLinkService {
         Optional<UserListLink> userListLink = userListLinkRepository.findById(id);
         if (userListLink.isPresent()) {
             UserListLink existingUserListLink = userListLink.get();
-            existingUserListLink.setUser(userListLinkDetails.getUser());
+            existingUserListLink.setUserInfo(userListLinkDetails.getUserInfo());
             existingUserListLink.setUserList(userListLinkDetails.getUserList());
             existingUserListLink.setListRole(userListLinkDetails.getListRole());
             return userListLinkRepository.save(existingUserListLink);
