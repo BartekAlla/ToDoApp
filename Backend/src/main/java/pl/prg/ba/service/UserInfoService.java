@@ -21,6 +21,8 @@ public class UserInfoService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder encoder;
+    private static final String EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -32,8 +34,20 @@ public class UserInfoService implements UserDetailsService {
     }
 
     public String addUser(UserInfo userInfo) {
+        if (!isValidEmail(userInfo.getEmail())) {
+            return "Wrong email format.";
+        }
+        Optional<UserInfo> emailEntry = repository.findByEmail(userInfo.getEmail());
+        if(emailEntry.isPresent()){
+            return "Email already exists.";
+        }
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
         return "User Added Successfully";
+    }
+    private boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
