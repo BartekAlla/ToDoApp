@@ -6,6 +6,7 @@ import lombok.*;
 import pl.prg.ba.enums.user.UserGender;
 import pl.prg.ba.enums.user.UserRole;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 
@@ -24,7 +25,8 @@ public class UserInfo {
     private UserGender userGender;
     private String roles;
 
-    private Integer age;
+    //private Integer age;
+    private LocalDate dateOfBirth;
     private String email;
     private String password;
     @JsonIgnore

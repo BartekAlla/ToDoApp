@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {User} from "../../Model/User/user";
+import {UserInfo} from "../../Model/User/userInfo";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../Service/User/user.service";
 
@@ -10,7 +10,7 @@ import {UserService} from "../../Service/User/user.service";
 })
 export class UserLoginComponent {
 
-  user: User;
+  user: UserInfo;
   hide = true;
   passwordType: string = 'password';
 
@@ -19,7 +19,7 @@ export class UserLoginComponent {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
-    this.user = new User();
+    this.user = new UserInfo();
 
   }
 

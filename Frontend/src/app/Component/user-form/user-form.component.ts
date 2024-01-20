@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from "../../Model/User/user";
+import {UserInfo} from "../../Model/User/userInfo";
 import {UserService} from "../../Service/User/user.service";
 
 
@@ -11,7 +11,7 @@ import {UserService} from "../../Service/User/user.service";
 })
 export class UserFormComponent {
 
-  user: User;
+  user: UserInfo;
   hide = true;
   passwordType: string = 'password';
 
@@ -20,7 +20,7 @@ export class UserFormComponent {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
-    this.user = new User();
+    this.user = new UserInfo();
 
   }
 
