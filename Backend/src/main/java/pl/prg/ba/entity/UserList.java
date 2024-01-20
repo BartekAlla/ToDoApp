@@ -29,22 +29,4 @@ public class UserList {
     @OneToMany
     @JoinColumn(name = "list_id")
     private Set<Category> listCategories;
-
-//    public UserList(String name, ListType listType) {
-//        this.id = null;
-//        this.name = name;
-//        this.listType = listType;
-//    }
-//
-//    public UserList(Integer id, String name, ListType listType) {
-//        this.id = id;
-//        this.name = name;
-//        this.listType = listType;
-//    }
-//
-//    public UserList() {
-//        this.id = null;
-//        this.name = null;
-//        this.listType = null;
-//    }
 }
