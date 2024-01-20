@@ -23,6 +23,7 @@ public class UserInfoService implements UserDetailsService {
     private PasswordEncoder encoder;
     private static final String EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private static final String PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$";
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,7 +40,10 @@ public class UserInfoService implements UserDetailsService {
         }
         Optional<UserInfo> emailEntry = repository.findByEmail(userInfo.getEmail());
         if(emailEntry.isPresent()){
-            return "Email already exists.";
+            return "User with provided e-mail already exists.";
+        }
+        if (!isValidPassword(userInfo.getPassword())){
+            return "Password must contain 8 characters, one number, one capitalized letter, and one special sign.";
         }
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
@@ -48,6 +52,11 @@ public class UserInfoService implements UserDetailsService {
     private boolean isValidEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    private boolean isValidPassword(String password) {
+        Pattern pattern = Pattern.compile(PASSWORD_REGEX);
+        Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
 }
