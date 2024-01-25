@@ -13,7 +13,7 @@ export class UserService {
   }
 
   public findAll(): Observable<UserInfo[]> {
-    return this.http.get<UserInfo[]>(this.usersUrl);
+    return this.http.get<UserInfo[]>((this.usersUrl).concat('/getUsers'));
   }
 
   public save(user: UserInfo) {

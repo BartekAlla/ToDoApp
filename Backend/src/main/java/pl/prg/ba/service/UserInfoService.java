@@ -33,7 +33,9 @@ public class UserInfoService implements UserDetailsService {
         return userDetail.map(UserInfoDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
     }
-
+    public List<UserInfo> getAllUsers() {
+        return repository.findAll();
+    }
     public String addUser(UserInfo userInfo) {
         if (!isValidEmail(userInfo.getEmail())) {
             return "Wrong email format.";

@@ -33,6 +33,10 @@ public class UserController {
     public String addNewUser(@RequestBody UserInfo userInfo) {
         return service.addUser(userInfo);
     }
+    @GetMapping("/getUsers")
+    public List<UserInfo> getAllUsers() {
+        return service.getAllUsers();
+    }
 
     @GetMapping("/user/userProfile")
     @PreAuthorize("hasAuthority('ROLE_USER')")
