@@ -10,7 +10,7 @@ import {UserService} from "../../Service/User/user.service";
 })
 export class UserLoginComponent {
 
-  user: UserInfo;
+  userInfo: UserInfo;
   hide = true;
   passwordType: string = 'password';
 
@@ -19,7 +19,7 @@ export class UserLoginComponent {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
-    this.user = new UserInfo();
+    this.userInfo = new UserInfo();
 
   }
 

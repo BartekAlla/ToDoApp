@@ -2,7 +2,7 @@ export class UserInfo {
   name: string;
   surname: string;
   gender: string;
-  age: number;
+  dateOfBirth: Date;
   email: string;
   password: string;
 
@@ -10,7 +10,7 @@ export class UserInfo {
     this.name = '';
     this.surname = '';
     this.gender = '';
-    this.age = 0;
+    this.dateOfBirth = new Date();
     this.email = '';
     this.password = '';
   }

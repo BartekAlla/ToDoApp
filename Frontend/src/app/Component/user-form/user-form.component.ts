@@ -11,7 +11,7 @@ import {UserService} from "../../Service/User/user.service";
 })
 export class UserFormComponent {
 
-  user: UserInfo;
+  userInfo: UserInfo;
   hide = true;
   passwordType: string = 'password';
 
@@ -20,16 +20,16 @@ export class UserFormComponent {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
-    this.user = new UserInfo();
+    this.userInfo = new UserInfo();
 
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    this.userService.save(this.userInfo).subscribe(result => this.gotoUserList());
   }
 
   gotoUserList() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/userlogin']);
   }
 
 

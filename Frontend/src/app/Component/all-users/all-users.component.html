@@ -8,7 +8,7 @@
         <th scope="col">Name</th>
         <th scope="col">Surname</th>
         <th scope="col">Gender</th>
-        <th scope="col">Age</th>
+        <th scope="col">Date of birth</th>
         <th scope="col">Email</th>
       </tr>
       </thead>
@@ -17,7 +17,7 @@
         <td>{{ userInfo.name }}</td>
         <td>{{ userInfo.surname }}</td>
         <td>{{ userInfo.gender  | titlecase   }}</td>
-        <td>{{ userInfo.age }}</td>
+        <td>{{ userInfo.dateOfBirth }}</td>
         <td><a href="mailto:{{ userInfo.email }}">{{ userInfo.email }}</a></td>
       </tr>
       </tbody>
