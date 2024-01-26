@@ -16,7 +16,7 @@
       <tr *ngFor="let userInfo of users">
         <td>{{ userInfo.name }}</td>
         <td>{{ userInfo.surname }}</td>
-        <td>{{ userInfo.gender  | titlecase   }}</td>
+        <td>{{ userInfo.userGender  | titlecase   }}</td>
         <td>{{ userInfo.dateOfBirth }}</td>
         <td><a href="mailto:{{ userInfo.email }}">{{ userInfo.email }}</a></td>
       </tr>

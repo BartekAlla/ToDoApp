@@ -17,6 +17,7 @@ export class UserService {
   }
 
   public save(user: UserInfo) {
-    return this.http.post<UserInfo>(this.usersUrl, user);
+    user.roles ="ROLE_USER";
+    return this.http.post<UserInfo>((this.usersUrl).concat('/addNewUser'), user);
   }
 }

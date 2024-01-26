@@ -60,20 +60,20 @@
 
     <mat-form-field class="form-input">
       <mat-label>Gender</mat-label>
-      <mat-select [(ngModel)]="userInfo.gender"
+      <mat-select [(ngModel)]="userInfo.userGender"
                   id="gender"
                   name="gender"
                   placeholder="Select your gender"
                   required
                   #gender="ngModel">
-        <mat-option value="Male">Male</mat-option>
-        <mat-option value="Female">Female</mat-option>
-        <mat-option value="Other">Other</mat-option>
+        <mat-option value="MALE">Male</mat-option>
+        <mat-option value="FEMALE">Female</mat-option>
+        <mat-option value="OTHER">Other</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput required [matDatepicker]="picker">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
