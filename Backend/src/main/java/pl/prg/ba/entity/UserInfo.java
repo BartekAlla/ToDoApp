@@ -1,5 +1,6 @@
 package pl.prg.ba.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,6 +8,7 @@ import pl.prg.ba.enums.user.UserGender;
 import pl.prg.ba.enums.user.UserRole;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 
@@ -26,6 +28,7 @@ public class UserInfo {
     private String roles;
 
     //private Integer age;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
     private String email;
     private String password;

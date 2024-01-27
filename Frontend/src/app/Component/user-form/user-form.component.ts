@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserInfo} from "../../Model/User/userInfo";
 import {UserService} from "../../Service/User/user.service";
-import {DatePipe} from "@angular/common";
 
 
 @Component({
@@ -24,8 +23,8 @@ export class UserFormComponent {
     this.userInfo = new UserInfo();
 
   }
-
   onSubmit() {
+
     this.userService.save(this.userInfo).subscribe(result => this.gotoUserList());
   }
 
