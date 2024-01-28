@@ -12,6 +12,7 @@ export class UserService {
     this.usersUrl = 'http://localhost:8080/auth';
   }
 
+
   public findAll(): Observable<UserInfo[]> {
     return this.http.get<UserInfo[]>((this.usersUrl).concat('/getUsers'));
   }
@@ -20,4 +21,9 @@ export class UserService {
     user.roles ="ROLE_USER";
     return this.http.post<UserInfo>((this.usersUrl).concat('/addNewUser'), user, { responseType: 'json' });
   }
+
+  getToken(credentials: { username: string, password: string }): Observable<any> {
+    return this.http.post((this.usersUrl).concat('/generateToken'), credentials, { responseType: 'json' });
+  }
+
 }

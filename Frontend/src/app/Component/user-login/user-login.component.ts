@@ -13,6 +13,7 @@ export class UserLoginComponent {
   userInfo: UserInfo;
   hide = true;
   passwordType: string = 'password';
+  errorMessage: string = '';
 
 
   constructor(
@@ -24,7 +25,17 @@ export class UserLoginComponent {
   }
 
   onSubmit() {
-
+    const credentials = {
+      username: this.userInfo.email,
+      password: this.userInfo.password
+    };
+    this.userService.getToken(credentials).subscribe((result: any) => {
+      if (result.success) {
+        this.gotoUserPage();
+      } else {
+        this.errorMessage = result.message;
+      }
+    });
   }
 
 
@@ -37,4 +48,7 @@ export class UserLoginComponent {
     this.hide = !this.hide;
   }
 
+  private gotoUserPage() {
+
+  }
 }

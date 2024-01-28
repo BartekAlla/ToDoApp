@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.prg.ba.entity.UserInfo;
 import pl.prg.ba.repository.UserInfoRepository;
-import pl.prg.ba.wrappers.SignUpResponseWrapper;
+import pl.prg.ba.wrappers.CredentialsWrapper;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,20 +37,20 @@ public class UserInfoService implements UserDetailsService {
     public List<UserInfo> getAllUsers() {
         return repository.findAll();
     }
-    public SignUpResponseWrapper addUser(UserInfo userInfo) {
+    public CredentialsWrapper addUser(UserInfo userInfo) {
         if (!isValidEmail(userInfo.getEmail())) {
-            return new SignUpResponseWrapper(false, "Wrong email format.");
+            return new CredentialsWrapper(false, "Wrong email format.");
         }
         Optional<UserInfo> emailEntry = repository.findByEmail(userInfo.getEmail());
         if(emailEntry.isPresent()){
-            return new SignUpResponseWrapper(false, "User with provided e-mail already exists.");
+            return new CredentialsWrapper(false, "User with provided e-mail already exists.");
         }
         if (!isValidPassword(userInfo.getPassword())){
-            return new SignUpResponseWrapper(false, "Password must contain 8 characters, one number, one capitalized letter, and one special sign.");
+            return new CredentialsWrapper(false, "Password must contain 8 characters, one number, one capitalized letter, and one special sign.");
         }
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
-        return new SignUpResponseWrapper(true, "User Added Successfully");
+        return new CredentialsWrapper(true, "User Added Successfully");
     }
 
     private boolean isValidEmail(String email) {

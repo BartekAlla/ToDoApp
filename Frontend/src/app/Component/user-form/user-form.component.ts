@@ -41,7 +41,7 @@ export class UserFormComponent {
   onSubmit() {
     this.userService.save(this.userInfo).subscribe((result : any) => {
       if (result.success) {
-        this.gotoUserList()
+        this.gotoUserList();
       } else {
         this.errorMessage = result.message;
       }
