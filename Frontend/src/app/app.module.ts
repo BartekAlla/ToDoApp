@@ -28,6 +28,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { UserPageComponent } from './Component/user-page/user-page.component';
+import { MyListsComponent } from './Component/my-lists/my-lists.component';
 
 
 
@@ -41,6 +42,7 @@ import { UserPageComponent } from './Component/user-page/user-page.component';
     UserLoginComponent,
     PublicListsComponent,
     UserPageComponent,
+    MyListsComponent,
   ],
   imports: [
     BrowserModule,

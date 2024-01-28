@@ -1,40 +1,50 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {UserInfo} from "../../Model/User/userInfo";
+import { HttpClient } from '@angular/common/http';
+import { UserInfo } from '../../Model/User/userInfo';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
-
   private usersUrl: string;
-  private userLoggedIn: {isLoggedIn: string, jwtToken: string};
+  private userLoggedIn: BehaviorSubject<{ isLoggedIn: string; jwt: string }>;
 
-  constructor(private http: HttpClient,
-              private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     this.usersUrl = 'http://localhost:8080/auth';
-    this.userLoggedIn = {isLoggedIn: 'false', jwtToken: ''};
-    localStorage.setItem('user', JSON.stringify(this.userLoggedIn));
+
+    const storedUser = localStorage.getItem('user');
+    this.userLoggedIn = new BehaviorSubject(
+      storedUser
+        ? JSON.parse(storedUser)
+        : { isLoggedIn: 'false', jwt: '' }
+    );
   }
-  public isLoggedIn() {
-    return JSON.parse(localStorage.getItem('user') || '{"isLoggedIn": "false"}').isLoggedIn;
+
+  get isLoggedIn$(): Observable<boolean> {
+    return this.userLoggedIn.asObservable().pipe(
+      map((user) => user.isLoggedIn === 'true')
+    );
   }
   public getCurrentUserToken() {
-    return localStorage.getItem('userToken');
+    return this.userLoggedIn.value.jwt;
   }
+
   public login(userToken: string): void {
-    this.userLoggedIn = {isLoggedIn: 'true', jwtToken: userToken};
-    localStorage.setItem('user', JSON.stringify(this.userLoggedIn));
+    this.userLoggedIn.next({ isLoggedIn: 'true', jwt: userToken });
+    localStorage.setItem('user', JSON.stringify(this.userLoggedIn.value));
     this.gotoUserPage();
   }
+
   public logout(): void {
-    this.userLoggedIn = {isLoggedIn: 'false', jwtToken: ''};
-    localStorage.setItem('user', JSON.stringify(this.userLoggedIn));
+    this.userLoggedIn.next({ isLoggedIn: 'false', jwt: '' });
+    localStorage.setItem('user', JSON.stringify(this.userLoggedIn.value));
     this.router.navigate(['/userlogin']);
   }
 
 
-  public findAll(): Observable<UserInfo[]> {
+
+public findAll(): Observable<UserInfo[]> {
     return this.http.get<UserInfo[]>((this.usersUrl).concat('/getUsers'));
   }
 
@@ -47,6 +57,6 @@ export class UserService {
     return this.http.post((this.usersUrl).concat('/generateToken'), credentials, { responseType: 'json' });
   }
   private gotoUserPage() {
-    this.router.navigate([(this.usersUrl).concat('/userpage')]);
+    this.router.navigate(['/userpage']);
   }
 }
