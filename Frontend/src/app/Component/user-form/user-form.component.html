@@ -72,11 +72,18 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
+
       <mat-label>Choose a date</mat-label>
-      <input matInput required [(ngModel)]="userInfo.dateOfBirth" [matDatepicker]="picker" >
+
+      <input matInput required [(ngModel)]="userInfo.dateOfBirth" [matDatepicker]="picker" #dateInputField
+             (dateInput)="userInfo.dateOfBirth = dateInputField.value">
+
       <mat-hint>YYY-MM-DD</mat-hint>
+
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+
       <mat-datepicker #picker></mat-datepicker>
+
     </mat-form-field>
     <mat-card-actions>
       <button mat-raised-button type="submit" [disabled]="!userForm.form.valid" color="primary">Sign Up</button>

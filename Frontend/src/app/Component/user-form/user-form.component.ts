@@ -4,10 +4,13 @@ import {UserInfo} from "../../Model/User/userInfo";
 import {UserService} from "../../Service/User/user.service";
 
 
+
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  styleUrls: ['./user-form.component.css'],
+
 })
 export class UserFormComponent {
 
@@ -23,8 +26,9 @@ export class UserFormComponent {
     this.userInfo = new UserInfo();
 
   }
-  onSubmit() {
 
+  onSubmit() {
+    console.log(this.userInfo.dateOfBirth);
     this.userService.save(this.userInfo).subscribe(result => this.gotoUserList());
   }
 
