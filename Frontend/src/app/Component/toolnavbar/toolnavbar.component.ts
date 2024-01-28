@@ -14,9 +14,7 @@ export class ToolnavbarComponent {
 
 
   constructor(private router: Router, private userService: UserService) {
-    this.userService.isLoggedIn$.subscribe((isLoggedIn) => {
-      this.isLoggedIn = isLoggedIn;
-    })
+    this.isLoggedIn = this.userService.isLoggedIn();
   }
   logout() {
     this.userService.logout();

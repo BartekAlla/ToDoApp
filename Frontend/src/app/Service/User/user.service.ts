@@ -8,23 +8,28 @@ import {Router} from "@angular/router";
 export class UserService {
 
   private usersUrl: string;
-  private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  private userLoggedIn: {isLoggedIn: string, jwtToken: string};
 
   constructor(private http: HttpClient,
               private router: Router) {
     this.usersUrl = 'http://localhost:8080/auth';
+    this.userLoggedIn = {isLoggedIn: 'false', jwtToken: ''};
+    localStorage.setItem('user', JSON.stringify(this.userLoggedIn));
   }
-  get isLoggedIn$(): Observable<boolean> {
-    return this._isLoggedIn$.asObservable();
+  public isLoggedIn() {
+    return JSON.parse(localStorage.getItem('user') || '{"isLoggedIn": "false"}').isLoggedIn;
+  }
+  public getCurrentUserToken() {
+    return localStorage.getItem('userToken');
   }
   public login(userToken: string): void {
-    this._isLoggedIn$.next(true);
-    localStorage.setItem('userToken', userToken)
+    this.userLoggedIn = {isLoggedIn: 'true', jwtToken: userToken};
+    localStorage.setItem('user', JSON.stringify(this.userLoggedIn));
     this.gotoUserPage();
   }
   public logout(): void {
-    this._isLoggedIn$.next(false);
-    localStorage.removeItem('userToken');
+    this.userLoggedIn = {isLoggedIn: 'false', jwtToken: ''};
+    localStorage.setItem('user', JSON.stringify(this.userLoggedIn));
     this.router.navigate(['/userlogin']);
   }
 

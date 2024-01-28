@@ -18,7 +18,6 @@ export class UserLoginComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private userService: UserService) {
     this.userInfo = new UserInfo();
 
