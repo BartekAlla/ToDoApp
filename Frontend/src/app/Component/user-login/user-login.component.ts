@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {UserInfo} from "../../Model/User/userInfo";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../Service/User/user.service";
@@ -31,24 +31,16 @@ export class UserLoginComponent {
     };
     this.userService.getToken(credentials).subscribe((result: any) => {
       if (result.success) {
-        this.gotoUserPage();
+        this.userService.login(result.message);
       } else {
         this.errorMessage = result.message;
       }
     });
   }
 
-
-
-
-// Inside your component class
   togglePasswordVisibility(event: Event) {
     event.preventDefault();
     this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
     this.hide = !this.hide;
-  }
-
-  private gotoUserPage() {
-
   }
 }

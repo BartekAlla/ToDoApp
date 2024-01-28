@@ -23,10 +23,11 @@ import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angula
 import { UserLoginComponent } from './Component/user-login/user-login.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {PublicListsComponent} from "./Component/public-lists/public-lists.component";
-import { FooterComponent } from './Component/footer/footer.component';
 import {UserListService} from "./Service/UserList/user-list.service";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { UserPageComponent } from './Component/user-page/user-page.component';
 
 
 
@@ -39,7 +40,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     UserFormComponent,
     UserLoginComponent,
     PublicListsComponent,
-    FooterComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +61,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatStepperModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatButtonToggleModule
   ],
   providers: [UserService, UserListService],
   bootstrap: [AppComponent]
