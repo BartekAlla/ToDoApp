@@ -14,7 +14,7 @@
       <mat-list-item><a routerLink="/home" style="text-decoration: none">Home</a></mat-list-item>
     </mat-list>
     <mat-list>
-      <mat-list-item><a routerLink="/userpage" style="text-decoration: none">My Lists</a></mat-list-item>
+      <mat-list-item *ngIf="isLoggedIn"><a routerLink="/userpage" style="text-decoration: none">My Lists</a></mat-list-item>
     </mat-list>
     <mat-list>
       <mat-list-item><a routerLink="/publiclists" style="text-decoration: none">Public lists</a></mat-list-item>
