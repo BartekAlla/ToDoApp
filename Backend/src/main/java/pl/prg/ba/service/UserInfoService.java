@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.prg.ba.entity.UserInfo;
 import pl.prg.ba.repository.UserInfoRepository;
+import pl.prg.ba.wrappers.SignUpResponseWrapper;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,20 +37,20 @@ public class UserInfoService implements UserDetailsService {
     public List<UserInfo> getAllUsers() {
         return repository.findAll();
     }
-    public String addUser(UserInfo userInfo) {
+    public SignUpResponseWrapper addUser(UserInfo userInfo) {
         if (!isValidEmail(userInfo.getEmail())) {
-            return "Wrong email format.";
+            return new SignUpResponseWrapper(false, "Wrong email format.");
         }
         Optional<UserInfo> emailEntry = repository.findByEmail(userInfo.getEmail());
         if(emailEntry.isPresent()){
-            return "User with provided e-mail already exists.";
+            return new SignUpResponseWrapper(false, "User with provided e-mail already exists.");
         }
         if (!isValidPassword(userInfo.getPassword())){
-            return "Password must contain 8 characters, one number, one capitalized letter, and one special sign.";
+            return new SignUpResponseWrapper(false, "Password must contain 8 characters, one number, one capitalized letter, and one special sign.");
         }
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
-        return "User Added Successfully";
+        return new SignUpResponseWrapper(true, "User Added Successfully");
     }
 
     private boolean isValidEmail(String email) {

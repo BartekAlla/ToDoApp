@@ -19,6 +19,7 @@ export class UserFormComponent {
   userInfo: UserInfo;
   hide = true;
   passwordType: string = 'password';
+  errorMessage: string = '';
 
 
   constructor(
@@ -38,7 +39,13 @@ export class UserFormComponent {
 
   }
   onSubmit() {
-    this.userService.save(this.userInfo).subscribe(result => this.gotoUserList());
+    this.userService.save(this.userInfo).subscribe((result : any) => {
+      if (result.success) {
+        this.gotoUserList()
+      } else {
+        this.errorMessage = result.message;
+      }
+    });
   }
 
   gotoUserList() {

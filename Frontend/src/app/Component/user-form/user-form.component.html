@@ -1,5 +1,7 @@
 <form class="signupForm" (ngSubmit)="onSubmit()" #userForm="ngForm">
   <mat-card class="form-card">
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
     <mat-form-field class="form-input">
       <mat-label>Email</mat-label>
       <input matInput type="email"

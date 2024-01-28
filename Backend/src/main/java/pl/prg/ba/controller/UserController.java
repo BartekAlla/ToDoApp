@@ -11,6 +11,7 @@ import pl.prg.ba.entity.AuthRequest;
 import pl.prg.ba.entity.UserInfo;
 import pl.prg.ba.service.JwtService;
 import pl.prg.ba.service.UserInfoService;
+import pl.prg.ba.wrappers.SignUpResponseWrapper;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +31,7 @@ public class UserController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/addNewUser")
-    public String addNewUser(@RequestBody UserInfo userInfo) {
+    public SignUpResponseWrapper addNewUser(@RequestBody UserInfo userInfo) {
         return service.addUser(userInfo);
     }
     @GetMapping("/getUsers")
