@@ -18,6 +18,6 @@ export class UserService {
 
   public save(user: UserInfo) {
     user.roles ="ROLE_USER";
-    return this.http.post<UserInfo>((this.usersUrl).concat('/addNewUser'), user);
+    return this.http.post<UserInfo>((this.usersUrl).concat('/addNewUser'), user, { responseType: 'json' });
   }
 }

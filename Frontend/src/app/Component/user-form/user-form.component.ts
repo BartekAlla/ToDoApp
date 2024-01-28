@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserInfo} from "../../Model/User/userInfo";
 import {UserService} from "../../Service/User/user.service";
+import {MatDatepickerInputEvent} from "@angular/material/datepicker";
+import {DatePipe} from "@angular/common";
 
 
 
@@ -27,8 +29,15 @@ export class UserFormComponent {
 
   }
 
+  onDateChange(event: MatDatepickerInputEvent<Date>) {
+    const selectedDate = event.value;
+    if (selectedDate) {
+      const formattedDate = new DatePipe('en-US').transform(selectedDate, 'yyyy-MM-dd') ?? '';
+      this.userInfo.dateOfBirth = formattedDate;
+    }
+
+  }
   onSubmit() {
-    console.log(this.userInfo.dateOfBirth);
     this.userService.save(this.userInfo).subscribe(result => this.gotoUserList());
   }
 
