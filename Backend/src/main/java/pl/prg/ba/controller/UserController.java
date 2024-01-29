@@ -16,7 +16,6 @@ import pl.prg.ba.wrappers.CredentialsWrapper;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/auth")
 public class UserController {
 
@@ -33,7 +32,9 @@ public class UserController {
     public CredentialsWrapper addNewUser(@RequestBody UserInfo userInfo) {
         return service.addUser(userInfo);
     }
+
     @GetMapping("/getUsers")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<UserInfo> getAllUsers() {
         return service.getAllUsers();
     }
@@ -54,7 +55,9 @@ public class UserController {
     public CredentialsWrapper authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
-            return new CredentialsWrapper(true, jwtService.generateToken(authRequest.getUsername()));
+            return new CredentialsWrapper(true,
+                    jwtService.generateToken(authRequest.getUsername()),
+                    this.service.getUserIdByUsername(authRequest.getUsername()));
         } else {
             return new CredentialsWrapper(false, "Invalid username or password.");
         }

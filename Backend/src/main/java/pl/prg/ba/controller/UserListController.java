@@ -10,22 +10,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/lists")
 public class UserListController {
     @Autowired
     private UserListService userListService;
     @PostMapping
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public UserList createList(@RequestBody UserList userList) {
         return userListService.createList(userList);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<UserList> getAllLists() {
         return userListService.getAllLists();
     }
     @GetMapping("/public")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public List<UserList> getPublicLists() {
         return userListService.getPublicLists();
     }
@@ -44,7 +42,6 @@ public class UserListController {
         return "All lists have been deleted successfully.";
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public void deleteList(@PathVariable Integer id) {
         userListService.deleteList(id);
     }

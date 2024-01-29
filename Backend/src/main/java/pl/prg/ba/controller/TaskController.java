@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/tasks")
 public class TaskController {
     @Autowired
@@ -18,24 +17,22 @@ public class TaskController {
 
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Task createTask(@RequestBody Task task) {
         return taskService.createTask(task);
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Optional<Task> getTaskById(@PathVariable Integer id) {
         return taskService.getTaskById(id);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Task updateTask(@PathVariable Integer id, @RequestBody Task taskDetails) {
         return taskService.updateTask(id, taskDetails);
     }
@@ -48,7 +45,6 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public void deleteTask(@PathVariable Integer id) {
         taskService.deleteTask(id);
     }

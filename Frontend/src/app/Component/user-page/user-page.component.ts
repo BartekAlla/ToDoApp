@@ -9,15 +9,9 @@ import {Router} from "@angular/router";
 })
 export class UserPageComponent {
 
-    isLoggedIn = false;
+  
     constructor(private userService: UserService,
                 private router: Router) {
-      // this.userService.isLoggedIn$.subscribe((isLoggedIn) => {
-      //   this.isLoggedIn = isLoggedIn;
-      //   if (!isLoggedIn) {
-      //     this.router.navigate(['/userlogin']);
-      //   }
-      // })
       if (!this.userService.getCurrentUserToken()) {
         router.navigate(['/userlogin']);
       }

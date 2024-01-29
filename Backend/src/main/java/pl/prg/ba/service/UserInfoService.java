@@ -30,10 +30,10 @@ public class UserInfoService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Optional<UserInfo> userDetail = repository.findByEmail(username);
-
         return userDetail.map(UserInfoDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
     }
+
     public List<UserInfo> getAllUsers() {
         return repository.findAll();
     }
@@ -58,9 +58,20 @@ public class UserInfoService implements UserDetailsService {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
     private boolean isValidPassword(String password) {
         Pattern pattern = Pattern.compile(PASSWORD_REGEX);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
+    }
+
+    public Integer getUserIdByUsername(String username) {
+        Optional<UserInfo> userInfoOptional = this.repository.findByEmail(username);
+        if (userInfoOptional.isPresent()) {
+            UserInfo userInfo = userInfoOptional.get();
+            return userInfo.getId();
+        } else {
+            return null;
+        }
     }
 }

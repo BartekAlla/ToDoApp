@@ -30,7 +30,8 @@ export class UserLoginComponent {
     };
     this.userService.getToken(credentials).subscribe((result: any) => {
       if (result.success) {
-        this.userService.login(result.message);
+
+        this.userService.login(result.message, result.id);
       } else {
         this.errorMessage = result.message;
       }
