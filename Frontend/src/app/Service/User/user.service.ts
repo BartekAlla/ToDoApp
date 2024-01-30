@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserInfo} from '../../Model/User/userInfo';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
@@ -46,6 +46,18 @@ export class UserService {
 
   public findAll(): Observable<UserInfo[]> {
     return this.http.get<UserInfo[]>((this.usersUrl).concat('/getUsers'));
+  }
+
+  public getCurrentUser()  {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userLoggedIn.value.jwt}`
+    });
+
+    return this.http.get<UserInfo>((this.usersUrl).concat('/user/', this.userLoggedIn.value.id.toString()),
+      {
+        headers: headers,
+        responseType: 'json'
+        });
   }
 
   public save(user: UserInfo) {
