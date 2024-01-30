@@ -31,6 +31,7 @@ public class UserInfo {
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
     private String email;
+    @JsonIgnore
     private String password;
     @JsonIgnore
     @OneToMany

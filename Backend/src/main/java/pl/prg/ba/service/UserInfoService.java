@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.prg.ba.entity.Category;
 import pl.prg.ba.entity.UserInfo;
 import pl.prg.ba.repository.UserInfoRepository;
 import pl.prg.ba.wrappers.CredentialsWrapper;
@@ -36,6 +37,9 @@ public class UserInfoService implements UserDetailsService {
 
     public List<UserInfo> getAllUsers() {
         return repository.findAll();
+    }
+    public Optional<UserInfo> getUserById(Integer id) {
+        return repository.findById(id);
     }
     public CredentialsWrapper addUser(UserInfo userInfo) {
         if (!isValidEmail(userInfo.getEmail())) {

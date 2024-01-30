@@ -6,6 +6,7 @@ import {UserFormComponent} from "./Component/user-form/user-form.component";
 import {UserLoginComponent} from "./Component/user-login/user-login.component";
 import {PublicListsComponent} from "./Component/public-lists/public-lists.component";
 import {UserPageComponent} from "./Component/user-page/user-page.component";
+import {AboutMeComponent} from "./Component/about-me/about-me.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'adduser', component: UserFormComponent},
   {path: 'userlogin', component: UserLoginComponent},
   {path: 'userpage', component: UserPageComponent},
+  {path: 'aboutme', component: AboutMeComponent},
   {path: 'publiclists', component: PublicListsComponent}];
 
 @NgModule({

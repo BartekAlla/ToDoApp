@@ -29,6 +29,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { UserPageComponent } from './Component/user-page/user-page.component';
 import { MyListsComponent } from './Component/my-lists/my-lists.component';
+import { AboutMeComponent } from './Component/about-me/about-me.component';
 
 
 
@@ -43,6 +44,7 @@ import { MyListsComponent } from './Component/my-lists/my-lists.component';
     PublicListsComponent,
     UserPageComponent,
     MyListsComponent,
+    AboutMeComponent,
   ],
   imports: [
     BrowserModule,

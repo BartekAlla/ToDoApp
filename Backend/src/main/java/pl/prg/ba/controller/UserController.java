@@ -8,12 +8,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import pl.prg.ba.entity.AuthRequest;
+import pl.prg.ba.entity.Category;
 import pl.prg.ba.entity.UserInfo;
 import pl.prg.ba.service.JwtService;
 import pl.prg.ba.service.UserInfoService;
 import pl.prg.ba.wrappers.CredentialsWrapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -37,6 +39,12 @@ public class UserController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<UserInfo> getAllUsers() {
         return service.getAllUsers();
+    }
+
+    @GetMapping("/user/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public Optional<UserInfo> getUserById(@PathVariable Integer id) {
+        return service.getUserById(id);
     }
 
     @GetMapping("/user/userProfile")
