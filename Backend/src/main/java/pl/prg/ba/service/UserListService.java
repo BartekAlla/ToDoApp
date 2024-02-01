@@ -3,6 +3,8 @@ package pl.prg.ba.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.prg.ba.entity.UserList;
+import pl.prg.ba.entity.UserListLink;
+import pl.prg.ba.repository.UserListLinkRepository;
 import pl.prg.ba.repository.UserListRepository;
 
 import java.util.List;
@@ -13,10 +15,13 @@ import java.util.Optional;
 public class UserListService {
 
     private UserListRepository userListRepository;
+    private UserListLinkRepository userListLinkRepository;
 
     @Autowired
-    public UserListService(UserListRepository userListRepository) {
+    public UserListService(UserListRepository userListRepository, UserListLinkRepository userListLinkRepository) {
         this.userListRepository = userListRepository;
+        this.userListLinkRepository = userListLinkRepository;
+
     }
 
     public UserList createList(UserList userList) {
@@ -58,4 +63,7 @@ public class UserListService {
         return userListRepository.findPublicLists();
     }
 
+    public List<UserListLink> getUserListLinksByUserId(Integer userId) {
+        return this.userListLinkRepository.getUserListLinksByUserId(userId);
+    }
 }

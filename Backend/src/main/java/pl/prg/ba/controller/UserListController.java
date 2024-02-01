@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.prg.ba.entity.UserList;
+import pl.prg.ba.entity.UserListLink;
 import pl.prg.ba.service.UserListService;
 
 import java.util.List;
@@ -31,6 +32,13 @@ public class UserListController {
     public Optional<UserList> getListById(@PathVariable Integer id) {
         return userListService.getListById(id);
     }
+
+    @GetMapping("/links/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public List<UserListLink> getUserListLinksByUserId(@PathVariable Integer id) {
+        return userListService.getUserListLinksByUserId(id);
+    }
+
     @PutMapping("/{id}")
     public UserList updateList(@PathVariable Integer id, @RequestBody UserList listDetails) {
         return userListService.updateList(id, listDetails);

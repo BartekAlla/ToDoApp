@@ -36,9 +36,6 @@ public class UserListLinkService {
 
         if (existingUserList != null) {
             userListLink.setUserList(existingUserList);
-
-
-
             UserInfo userInfo = userListLink.getUserInfo();
             if (userInfo.getId() == null) {
                 throw new IllegalArgumentException("User ID cannot be null");
