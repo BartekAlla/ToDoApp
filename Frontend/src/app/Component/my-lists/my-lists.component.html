@@ -10,7 +10,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let link of userLinks">
-        <td>{{ link.userList.name }}</td>
+        <td><a routerLink="/listpage" style="text-decoration: none">{{ link.userList.name }}</a></td>
         <td>{{ link.listRole }}</td>
       </tr>
       </tbody>

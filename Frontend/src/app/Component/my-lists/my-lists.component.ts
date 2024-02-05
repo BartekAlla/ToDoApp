@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {UserList} from "../../Model/UserList/user-list";
 import {UserListService} from "../../Service/UserList/user-list.service";
 import {UserListLink} from "../../Model/UserListLink/user-list-link";
 
