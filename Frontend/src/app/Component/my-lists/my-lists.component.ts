@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {UserList} from "../../Model/UserList/user-list";
+import {UserListService} from "../../Service/UserList/user-list.service";
+import {UserListLink} from "../../Model/UserListLink/user-list-link";
 
 @Component({
   selector: 'app-my-lists',
@@ -6,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './my-lists.component.css'
 })
 export class MyListsComponent {
+  userLinks: UserListLink[] = [];
+  constructor(private listService: UserListService) {
+  }
 
+  ngOnInit() {
+    this.listService.findCurrentUsersLists().subscribe(data => {
+      this.userLinks = data;
+    });
+  }
 }

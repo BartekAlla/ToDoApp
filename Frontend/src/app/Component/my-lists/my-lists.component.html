@@ -1,3 +1,19 @@
 <div>
   MY LISTS!
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th scope="col">List Name</th>
+        <th scope="col">Role</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let link of userLinks">
+        <td>{{ link.userList.name }}</td>
+        <td>{{ link.listRole }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

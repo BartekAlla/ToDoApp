@@ -30,6 +30,9 @@ export class UserService {
   public getCurrentUserToken() {
     return this.userLoggedIn.value.jwt;
   }
+  public getCurrentUserId() {
+    return this.userLoggedIn.value.id;
+  }
 
   public login(userToken: string, id: number): void {
     this.userLoggedIn.next({isLoggedIn: 'true', jwt: userToken, id: id});
@@ -72,4 +75,6 @@ export class UserService {
   private gotoUserPage() {
     this.router.navigate(['/userpage']);
   }
+
+
 }
