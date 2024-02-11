@@ -37,7 +37,13 @@ export class UserListService {
       });
   }
 
-  public save(list: UserList) {
-    return this.http.post<UserList>(this.listsUrl, list);
+  public saveList(list: UserList) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.getCurrentUserToken().toString()}`
+    });
+    return this.http.post<UserList>(this.listsUrl, list, {
+      headers: headers,
+      responseType: 'json'
+    });
   }
 }

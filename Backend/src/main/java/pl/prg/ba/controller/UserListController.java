@@ -16,6 +16,7 @@ public class UserListController {
     @Autowired
     private UserListService userListService;
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public UserList createList(@RequestBody UserList userList) {
         return userListService.createList(userList);
     }
