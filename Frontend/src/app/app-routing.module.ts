@@ -8,6 +8,7 @@ import {PublicListsComponent} from "./Component/public-lists/public-lists.compon
 import {UserPageComponent} from "./Component/user-page/user-page.component";
 import {AboutMeComponent} from "./Component/about-me/about-me.component";
 import {ListPageComponent} from "./Component/list-page/list-page.component";
+import {ListFormComponent} from "./Component/list-form/list-form.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'userpage', component: UserPageComponent},
   {path: 'aboutme', component: AboutMeComponent},
   {path: 'listpage', component: ListPageComponent},
+  {path: 'newList', component: ListFormComponent},
   {path: 'publiclists', component: PublicListsComponent}];
 
 @NgModule({

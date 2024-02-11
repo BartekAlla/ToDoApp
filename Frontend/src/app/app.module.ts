@@ -31,6 +31,7 @@ import { UserPageComponent } from './Component/user-page/user-page.component';
 import { MyListsComponent } from './Component/my-lists/my-lists.component';
 import { AboutMeComponent } from './Component/about-me/about-me.component';
 import { ListPageComponent } from './Component/list-page/list-page.component';
+import { ListFormComponent } from './Component/list-form/list-form.component';
 
 
 
@@ -47,6 +48,7 @@ import { ListPageComponent } from './Component/list-page/list-page.component';
     MyListsComponent,
     AboutMeComponent,
     ListPageComponent,
+    ListFormComponent,
   ],
   imports: [
     BrowserModule,

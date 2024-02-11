@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {UserListService} from "../../Service/UserList/user-list.service";
 import {UserListLink} from "../../Model/UserListLink/user-list-link";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-lists',
@@ -9,7 +10,8 @@ import {UserListLink} from "../../Model/UserListLink/user-list-link";
 })
 export class MyListsComponent {
   userLinks: UserListLink[] = [];
-  constructor(private listService: UserListService) {
+  constructor(private listService: UserListService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -18,7 +20,11 @@ export class MyListsComponent {
     });
   }
 
-  saveSelectedList(id: number, listRole: string) {
-    //TODO: add chosen list to local storage
+  saveSelectedList(id: number) {
+    localStorage.setItem('list', JSON.stringify(id));
+  }
+
+  addNewList() {
+    this.router.navigate(['/newList']);
   }
 }

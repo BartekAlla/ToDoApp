@@ -1,0 +1,30 @@
+<form class="listForm" (ngSubmit)="onSubmit()" #listForm="ngForm">
+  <mat-card class="form-card">
+    <mat-form-field class="form-input">
+      <mat-label>Name</mat-label>
+      <input matInput type="text"
+             [(ngModel)]="userList.name"
+             name="name"
+             id="name"
+             placeholder="Enter list name"
+             required
+             #name="ngModel">
+    </mat-form-field>
+    <mat-form-field class="form-input">
+      <mat-label>List type</mat-label>
+      <mat-select [(ngModel)]="userList.listType"
+                  name="listType"
+                  id="listType"
+                  placeholder="Select list type"
+                  required
+                  #listType="ngModel">
+        <mat-option value="PUBLIC">Public</mat-option>
+        <mat-option value="PRIVATE">Private</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-card-actions>
+      <button mat-raised-button type="submit" [disabled]="!listForm.form.valid" color="primary">Add new list</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,5 +1,6 @@
 <div>
-  MY LISTS!
+  MY LISTS! <br>
+<mat-button-toggle (click)="addNewList()">Create new list</mat-button-toggle>
   <div>
     <table>
       <thead>
@@ -10,7 +11,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let link of userLinks">
-        <td><a routerLink="/listpage" (click)="saveSelectedList(link.userList.id, link.listRole)" style="text-decoration: none">{{ link.userList.name }}</a></td>
+        <td><a routerLink="/listpage" (click)="saveSelectedList(link.userList.id)" style="text-decoration: none">{{ link.userList.name }}</a></td>
         <td>{{ link.listRole }}</td>
       </tr>
       </tbody>
