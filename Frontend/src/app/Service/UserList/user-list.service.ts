@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserList} from "../../Model/UserList/user-list";
-import {Observable} from "rxjs";
-import {UserInfo} from "../../Model/User/userInfo";
+import {BehaviorSubject, Observable} from "rxjs";
 import {UserService} from "../User/user.service";
 import {UserListLink} from "../../Model/UserListLink/user-list-link";
 

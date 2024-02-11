@@ -17,4 +17,8 @@ export class MyListsComponent {
       this.userLinks = data;
     });
   }
+
+  saveSelectedList(id: number, listRole: string) {
+    //TODO: add chosen list to local storage
+  }
 }

@@ -10,6 +10,7 @@ export class UserService {
   private usersUrl: string;
   private userLoggedIn: BehaviorSubject<{ isLoggedIn: string; jwt: string ; id: number}>;
 
+
   constructor(private http: HttpClient, private router: Router) {
     this.usersUrl = 'http://localhost:8080/auth';
 
