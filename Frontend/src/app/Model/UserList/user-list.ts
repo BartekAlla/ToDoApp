@@ -2,8 +2,8 @@
 
 export class UserList {
   id: number;
-  name: string;
-  listType: string;
+  name?: string;
+  listType?: string;
 
 
   constructor() {

@@ -3,6 +3,7 @@ import {UserList} from "../../Model/UserList/user-list";
 import {UserService} from "../../Service/User/user.service";
 import {UserListService} from "../../Service/UserList/user-list.service";
 import {Router} from "@angular/router";
+import {UserListLinkService} from "../../Service/UserListLink/user-list-link.service";
 
 
 @Component({
@@ -14,17 +15,22 @@ export class ListFormComponent {
   userList: UserList;
 
   constructor(private userListService: UserListService,
+              private userListLinkService: UserListLinkService,
               private router: Router) {
     this.userList = new UserList();
 
   }
 
   onSubmit() {
-    console.log('Form Submitted');
-    this.userListService.saveList(this.userList).subscribe( (result : any) => {
-      if (result.success) {
-        this.gotoMyLists();
-      }
+    this.userListService.saveList(this.userList).subscribe((result: any) => {
+      console.log(result.id);
+      this.addUserListLink(result.id);
+    });
+  }
+
+  private addUserListLink(id: number) {
+    this.userListLinkService.saveUserListLink(id).subscribe(() => {
+      this.gotoMyLists();
     });
   }
 
@@ -32,3 +38,7 @@ export class ListFormComponent {
     this.router.navigate(['/userpage']);
   }
 }
+
+
+
+

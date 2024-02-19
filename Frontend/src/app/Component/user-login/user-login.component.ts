@@ -25,8 +25,8 @@ export class UserLoginComponent {
 
   onSubmit() {
     const credentials = {
-      username: this.userInfo.email,
-      password: this.userInfo.password
+      username: this.userInfo.email ?? '',
+      password: this.userInfo.password ?? ''
     };
     this.userService.getToken(credentials).subscribe((result: any) => {
       if (result.success) {

@@ -32,6 +32,7 @@ import { MyListsComponent } from './Component/my-lists/my-lists.component';
 import { AboutMeComponent } from './Component/about-me/about-me.component';
 import { ListPageComponent } from './Component/list-page/list-page.component';
 import { ListFormComponent } from './Component/list-form/list-form.component';
+import {UserListLinkService} from "./Service/UserListLink/user-list-link.service";
 
 
 
@@ -72,7 +73,7 @@ import { ListFormComponent } from './Component/list-form/list-form.component';
     MatNativeDateModule,
     MatButtonToggleModule
   ],
-  providers: [UserService, UserListService],
+  providers: [UserService, UserListService, UserListLinkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
