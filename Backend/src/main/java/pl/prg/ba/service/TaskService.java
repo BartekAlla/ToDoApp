@@ -66,4 +66,8 @@ public class TaskService {
     public void deleteTask(Integer id) {
         taskRepository.deleteById(id);
     }
+
+    public List<Task> getTasksByCategoryId(Integer id) {
+        return taskRepository.findTasksByCategoryId(id);
+    }
 }

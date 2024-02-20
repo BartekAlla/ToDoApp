@@ -33,6 +33,9 @@ import { AboutMeComponent } from './Component/about-me/about-me.component';
 import { ListPageComponent } from './Component/list-page/list-page.component';
 import { ListFormComponent } from './Component/list-form/list-form.component';
 import {UserListLinkService} from "./Service/UserListLink/user-list-link.service";
+import {CategoryService} from "./Service/Category/category.service";
+import {TaskService} from "./Service/Task/task.service";
+
 
 
 
@@ -49,7 +52,7 @@ import {UserListLinkService} from "./Service/UserListLink/user-list-link.service
     MyListsComponent,
     AboutMeComponent,
     ListPageComponent,
-    ListFormComponent,
+    ListFormComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,7 @@ import {UserListLinkService} from "./Service/UserListLink/user-list-link.service
     MatNativeDateModule,
     MatButtonToggleModule
   ],
-  providers: [UserService, UserListService, UserListLinkService],
+  providers: [UserService, UserListService, UserListLinkService, CategoryService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

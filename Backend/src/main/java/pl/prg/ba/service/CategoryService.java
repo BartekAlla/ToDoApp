@@ -66,4 +66,7 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
+    public List<Category> getCategoriesByListId(Integer id) {
+        return categoryRepository.findCategoryByListId(id);
+    }
 }

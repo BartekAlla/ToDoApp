@@ -27,6 +27,12 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
+    @GetMapping("/list/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public List<Category> getCategoriesByListId(@PathVariable Integer id) {
+        return categoryService.getCategoriesByListId(id);
+    }
+
     @GetMapping("/{id}")
     public Optional<Category> getCategoryById(@PathVariable Integer id) {
         return categoryService.getCategoryById(id);

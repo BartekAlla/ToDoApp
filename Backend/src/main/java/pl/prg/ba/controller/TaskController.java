@@ -3,6 +3,7 @@ package pl.prg.ba.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pl.prg.ba.entity.Category;
 import pl.prg.ba.entity.Task;
 import pl.prg.ba.service.TaskService;
 
@@ -26,7 +27,11 @@ public class TaskController {
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
     }
-
+    @GetMapping("/category/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public List<Task> getTasksByCategoryId(@PathVariable Integer id) {
+        return taskService.getTasksByCategoryId(id);
+    }
     @GetMapping("/{id}")
     public Optional<Task> getTaskById(@PathVariable Integer id) {
         return taskService.getTaskById(id);
