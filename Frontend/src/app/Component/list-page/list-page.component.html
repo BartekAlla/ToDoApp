@@ -17,4 +17,14 @@
       </mat-card-content>
     </mat-card>
   </div>
+  <mat-card>
+    <mat-button-toggle (click)="toggleCategoryNameInput()">
+      {{ isInputVisible ? 'Cancel' : 'Add new!' }}
+    </mat-button-toggle>
+
+    <div *ngIf="isInputVisible">
+      <input [(ngModel)]="newCategory.name" placeholder="Enter category name" />
+      <button (click)="addCategory()">Add</button>
+    </div>
+  </mat-card>
 </div>
