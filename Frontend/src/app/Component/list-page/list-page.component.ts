@@ -35,3 +35,5 @@ export class ListPageComponent {
       this.taskService.changeTaskStatus(task);
   }
 }
+//TODO add button for categories
+//TODO add button for tasks
