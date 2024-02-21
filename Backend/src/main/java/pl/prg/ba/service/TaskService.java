@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 public class TaskService {
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
     private final CategoryRepository categoryRepository;
 
     @Autowired
@@ -70,4 +70,6 @@ public class TaskService {
     public List<Task> getTasksByCategoryId(Integer id) {
         return taskRepository.findTasksByCategoryId(id);
     }
+
+
 }

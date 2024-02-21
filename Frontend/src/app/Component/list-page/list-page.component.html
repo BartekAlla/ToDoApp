@@ -5,7 +5,14 @@
       <mat-card-content>
         <mat-toolbar>
           <span>{{ category.name }}</span>
+          <mat-button-toggle (click)="toggleShowDoneTasks(category)">Show done</mat-button-toggle>
         </mat-toolbar>
+        <div *ngFor="let task of category.tasks">
+          <mat-card *ngIf="task.taskStatus !== 'DONE' || category.showDoneTasks">
+            {{ task.name }}
+            <mat-checkbox [value]="task.taskStatus" [checked]="task.taskStatus === 'DONE'" (change)="onCheckboxChange(task)"></mat-checkbox>
+          </mat-card>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

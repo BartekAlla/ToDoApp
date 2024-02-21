@@ -35,6 +35,8 @@ import { ListFormComponent } from './Component/list-form/list-form.component';
 import {UserListLinkService} from "./Service/UserListLink/user-list-link.service";
 import {CategoryService} from "./Service/Category/category.service";
 import {TaskService} from "./Service/Task/task.service";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 
@@ -74,7 +76,9 @@ import {TaskService} from "./Service/Task/task.service";
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [UserService, UserListService, UserListLinkService, CategoryService, TaskService],
   bootstrap: [AppComponent]

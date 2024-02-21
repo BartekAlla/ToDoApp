@@ -43,7 +43,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/addNewUser", "/auth/generateToken", "/auth/getUsers","/lists/public").permitAll()
                 .and()
-                .authorizeHttpRequests().requestMatchers("/auth/user/**", "/categories", "/categories/list/**", "/tasks", "/tasks/category/**", "/ullinks", "/lists/links/**", "/lists").authenticated()
+                .authorizeHttpRequests()
+                .requestMatchers("/auth/user/**",
+                        "/categories",
+                        "/categories/list/**",
+                        "/tasks",
+                        "/tasks/category/**",
+                        "/tasks/**",
+                        "/ullinks",
+                        "/lists/links/**",
+                        "/lists").authenticated()
                 .and()
                 .authorizeHttpRequests().requestMatchers("/auth/admin/**").authenticated()
                 .and()

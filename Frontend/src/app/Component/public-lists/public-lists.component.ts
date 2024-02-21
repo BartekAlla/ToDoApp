@@ -17,4 +17,8 @@ export class PublicListsComponent implements OnInit {
       this.lists = data;
     });
   }
+
+  saveSelectedList(id: number) {
+    localStorage.setItem('list', JSON.stringify(id));
+  }
 }

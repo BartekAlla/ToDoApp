@@ -38,6 +38,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Task updateTask(@PathVariable Integer id, @RequestBody Task taskDetails) {
         return taskService.updateTask(id, taskDetails);
     }

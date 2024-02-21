@@ -9,7 +9,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let list of lists">
-        <td><a routerLink="/listpage"  style="text-decoration: none">{{ list.name }}</a></td>
+        <td><a routerLink="/listpage"  (click)="saveSelectedList(list.id)" style="text-decoration: none">{{ list.name }}</a></td>
       </tr>
       </tbody>
     </table>
