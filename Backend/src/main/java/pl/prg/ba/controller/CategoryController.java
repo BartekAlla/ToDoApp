@@ -16,7 +16,8 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @PostMapping
+    @PostMapping("/addNew")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Category createCategory(@RequestBody Category category) {
         return categoryService.createCategory(category);
     }

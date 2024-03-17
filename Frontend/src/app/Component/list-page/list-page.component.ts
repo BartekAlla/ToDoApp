@@ -12,10 +12,13 @@ import { Task } from "../../Model/Task/task";
 })
 export class ListPageComponent {
   listCategories: ListCategory[] = [];
-  isInputVisible = false;
+  isCategoryInputVisible = false;
+  isTaskInputVisible = false;
   newCategory: ListCategory;
+  newTask: Task;
   constructor(private categoryService: CategoryService, private taskService: TaskService) {
     this.newCategory = new ListCategory();
+    this.newTask = new Task();
   }
 
   ngOnInit() {
@@ -38,22 +41,22 @@ export class ListPageComponent {
       this.taskService.changeTaskStatus(task);
   }
   toggleCategoryNameInput() {
-    this.isInputVisible = !this.isInputVisible;
+    this.isCategoryInputVisible = !this.isCategoryInputVisible;
   }
 
   addCategory() {
-    console.log('Category added successfully:');
-    this.isInputVisible = false;
-    //TODO ADD LOGIC TO ADD BUTTON
-    //   this.categoryName = '';
-    // You can call your service here to send the data to the server
-    // this.yourService.addCategory(this.categoryName).subscribe(response => {
-    //   console.log('Category added successfully:', response);
-    //   // Optionally, you can reset the state or perform any other action
-    //   this.isInputVisible = false;
-    //   this.categoryName = '';
-    // });
+    this.isCategoryInputVisible = false;
+    this.categoryService.addCategoryToList(this.newCategory);
+  }
+
+  toggleTaskNameInput() {
+    this.isTaskInputVisible = !this.isTaskInputVisible;
+  }
+
+  addTask(categoryId: number) {
+    this.isTaskInputVisible = false;
+    this.taskService.addTaskToList(categoryId, this.newTask);
   }
 }
 
-//TODO add button for tasks
+

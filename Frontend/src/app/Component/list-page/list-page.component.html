@@ -14,15 +14,23 @@
             <mat-checkbox [value]="task.taskStatus" [checked]="task.taskStatus === 'DONE'" (change)="onCheckboxChange(task)"></mat-checkbox>
           </mat-card>
         </div>
+        <mat-button-toggle (click)="toggleTaskNameInput()">
+          {{ isTaskInputVisible ? 'Cancel' : 'Add new!' }}
+        </mat-button-toggle>
+        <div *ngIf="isTaskInputVisible">
+          <input [(ngModel)]="newTask.name" placeholder="Enter task name" />
+          <button (click)="addTask(category.id)">Add</button>
+        </div>
       </mat-card-content>
+
     </mat-card>
   </div>
   <mat-card>
     <mat-button-toggle (click)="toggleCategoryNameInput()">
-      {{ isInputVisible ? 'Cancel' : 'Add new!' }}
+      {{ isCategoryInputVisible ? 'Cancel' : 'Add new!' }}
     </mat-button-toggle>
 
-    <div *ngIf="isInputVisible">
+    <div *ngIf="isCategoryInputVisible">
       <input [(ngModel)]="newCategory.name" placeholder="Enter category name" />
       <button (click)="addCategory()">Add</button>
     </div>

@@ -5,8 +5,8 @@ export class ListCategory {
   id: number;
   name: string;
   userList: UserList;
-  tasks: Task[];
-  showDoneTasks: boolean;
+  tasks?: Task[];
+  showDoneTasks?: boolean;
 
   constructor() {
     this.id = 0;

@@ -17,7 +17,8 @@ public class TaskController {
     private TaskService taskService;
 
 
-    @PostMapping
+    @PostMapping("/addNew")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Task createTask(@RequestBody Task task) {
         return taskService.createTask(task);
     }

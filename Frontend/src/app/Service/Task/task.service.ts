@@ -2,6 +2,7 @@ import {Injectable, NgZone} from '@angular/core';
 import {UserService} from "../User/user.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Task} from "../../Model/Task/task";
+import {ListCategory} from "../../Model/ListCategory/list-category";
 
 @Injectable()
 export class TaskService {
@@ -39,6 +40,31 @@ export class TaskService {
     this.http.put<Task>(this.tasksURL.concat('/', task.id.toString()), task, { headers })
       .subscribe(() => {
         this.ngZone.run(() => {});
+      });
+  }
+
+  addTaskToList(categoryId: number, newTask: Task) {
+    const modifiedTask = {
+      id: 0,
+      name: newTask.name,
+      taskStatus: "PENDING",
+      category: {
+        id: categoryId
+      }
+    }
+    console.log(modifiedTask);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.getCurrentUserToken().toString()}`
+    });
+    return this.http.post<ListCategory>(this.tasksURL + '/addNew', modifiedTask, { headers: headers, responseType: 'json' })
+      .subscribe({
+        next: response => {
+          console.log('Response:', response);
+          location.reload();
+        },
+        error: err => {
+          console.error('Error:', err);
+        }
       });
   }
 }
