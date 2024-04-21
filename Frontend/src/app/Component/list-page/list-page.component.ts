@@ -13,7 +13,6 @@ import { Task } from "../../Model/Task/task";
 export class ListPageComponent {
   listCategories: ListCategory[] = [];
   isCategoryInputVisible = false;
-  isTaskInputVisible = false;
   newCategory: ListCategory;
   newTask: Task;
   constructor(private categoryService: CategoryService, private taskService: TaskService) {
@@ -49,13 +48,13 @@ export class ListPageComponent {
     this.categoryService.addCategoryToList(this.newCategory);
   }
 
-  toggleTaskNameInput() {
-    this.isTaskInputVisible = !this.isTaskInputVisible;
+  toggleTaskNameInput(category: ListCategory) {
+    category.showTaskInput = !category.showTaskInput;
   }
 
-  addTask(categoryId: number) {
-    this.isTaskInputVisible = false;
-    this.taskService.addTaskToList(categoryId, this.newTask);
+  addTask(category: ListCategory) {
+    category.showTaskInput = false;
+    this.taskService.addTaskToList(category.id, this.newTask);
   }
 }
 

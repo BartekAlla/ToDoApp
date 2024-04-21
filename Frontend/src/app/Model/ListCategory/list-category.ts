@@ -7,6 +7,7 @@ export class ListCategory {
   userList: UserList;
   tasks?: Task[];
   showDoneTasks?: boolean;
+  showTaskInput?: boolean;
 
   constructor() {
     this.id = 0;
@@ -14,5 +15,6 @@ export class ListCategory {
     this.userList = new UserList();
     this.tasks = [];
     this.showDoneTasks = false;
+    this.showTaskInput = false;
   }
 }
