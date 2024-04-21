@@ -4,9 +4,12 @@
   </button>
   <span><a routerLink="/home" style="text-decoration: none">ToDoApp</a></span>
   <span class="example-spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>account_circle</mat-icon>
-  </button>
+  <a routerLink="/userlogin">
+    <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </a>
+
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
@@ -14,19 +17,23 @@
       <mat-list-item><a routerLink="/home" style="text-decoration: none">Home</a></mat-list-item>
     </mat-list>
     <mat-list>
-      <mat-list-item *ngIf="isLoggedIn"><a routerLink="/aboutme" style="text-decoration: none">My Profile</a></mat-list-item>
+      <mat-list-item *ngIf="isLoggedIn"><a routerLink="/aboutme" style="text-decoration: none">My Profile</a>
+      </mat-list-item>
     </mat-list>
     <mat-list>
-      <mat-list-item *ngIf="isLoggedIn"><a routerLink="/userpage" style="text-decoration: none">My Lists</a></mat-list-item>
+      <mat-list-item *ngIf="isLoggedIn"><a routerLink="/userpage" style="text-decoration: none">My Lists</a>
+      </mat-list-item>
     </mat-list>
     <mat-list>
       <mat-list-item><a routerLink="/publiclists" style="text-decoration: none">Public lists</a></mat-list-item>
     </mat-list>
     <mat-list>
-      <mat-list-item *ngIf="!isLoggedIn"><a routerLink="/userlogin" style="text-decoration: none">Sign In</a></mat-list-item>
+      <mat-list-item *ngIf="!isLoggedIn"><a routerLink="/userlogin" style="text-decoration: none">Sign In</a>
+      </mat-list-item>
     </mat-list>
     <mat-list>
-      <mat-list-item *ngIf="!isLoggedIn"><a routerLink="/adduser" style="text-decoration: none">Sign Up</a></mat-list-item>
+      <mat-list-item *ngIf="!isLoggedIn"><a routerLink="/adduser" style="text-decoration: none">Sign Up</a>
+      </mat-list-item>
     </mat-list>
     <mat-list>
       <mat-list-item *ngIf="isLoggedIn">
