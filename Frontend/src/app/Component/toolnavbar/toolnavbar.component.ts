@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../Service/User/user.service';
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-toolnavbar',
@@ -22,4 +23,12 @@ export class ToolnavbarComponent implements OnInit {
   logout() {
     this.userService.logout();
   }
+
+  redirectOnProfileIconClick() {
+    this.userService.getCurrentUserId() == 0 ? this.router.navigate(['/userlogin']) : this.router.navigate(['/userpage']) ;
+
+  }
 }
+
+
+

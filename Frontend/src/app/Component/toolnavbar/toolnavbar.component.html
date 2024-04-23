@@ -4,11 +4,10 @@
   </button>
   <span><a routerLink="/home" style="text-decoration: none">ToDoApp</a></span>
   <span class="example-spacer"></span>
-  <a routerLink="/userlogin">
-    <button mat-icon-button>
-      <mat-icon>account_circle</mat-icon>
-    </button>
-  </a>
+
+  <button mat-icon-button (click)="redirectOnProfileIconClick()">
+    <mat-icon>account_circle</mat-icon>
+  </button>
 
 </mat-toolbar>
 <mat-sidenav-container>
