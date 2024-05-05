@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.prg.ba.entity.UserInfo;
 import pl.prg.ba.entity.UserList;
 import pl.prg.ba.entity.UserListLink;
+import pl.prg.ba.enums.list.ListRole;
 import pl.prg.ba.repository.UserListLinkRepository;
 import pl.prg.ba.repository.UserListRepository;
 import pl.prg.ba.repository.UserInfoRepository;
@@ -89,5 +90,9 @@ public class UserListLinkService {
 
     public void deleteUserListLink(Integer id) {
         userListLinkRepository.deleteById(id);
+    }
+
+    public ListRole getCurrentUserPermissionForThisList(Integer userId, Integer listId) {
+        return this.userListLinkRepository.getCurrentUserPermissionForThisList(userId,listId);
     }
 }

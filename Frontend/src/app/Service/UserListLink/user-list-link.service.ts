@@ -3,6 +3,10 @@ import {UserService} from "../User/user.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserList} from "../../Model/UserList/user-list";
 import {UserListLink} from "../../Model/UserListLink/user-list-link";
+import {ListRole} from "../../Enum/list-role";
+import {UserInfo} from "../../Model/User/userInfo";
+import {UserListService} from "../UserList/user-list.service";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class UserListLinkService {
@@ -10,7 +14,8 @@ export class UserListLinkService {
   userListLink: UserListLink;
 
   constructor(private userService: UserService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private userListService: UserListService) {
     this.linksUrl = 'http://localhost:8080/ullinks';
     this.userListLink = new UserListLink();
   }
@@ -37,5 +42,23 @@ export class UserListLinkService {
       headers: headers,
       responseType: 'json'
     });
+  }
+
+  checkIfCurrentUserHasPermission() {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.getCurrentUserToken().toString()}`
+    });
+    return this.http.get<ListRole>((this.linksUrl)
+                    .concat('/user=',
+                      this.userService.getCurrentUserId().toString(),
+                      '/list=',
+                      this.userListService.getCurrentListId().toString()),
+      {
+        headers: headers,
+        responseType: 'json'
+      });
+      //.pipe(
+      //map(response => response as ListRole)
+    //);
   }
 }

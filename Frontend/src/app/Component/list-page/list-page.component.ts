@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
-import { ListCategory } from "../../Model/ListCategory/list-category";
-import { CategoryService } from "../../Service/Category/category.service";
-import { TaskService } from "../../Service/Task/task.service";
-import { Task } from "../../Model/Task/task";
+import {Component} from '@angular/core';
+import {ListCategory} from "../../Model/ListCategory/list-category";
+import {CategoryService} from "../../Service/Category/category.service";
+import {TaskService} from "../../Service/Task/task.service";
+import {Task} from "../../Model/Task/task";
+import {UserListLinkService} from "../../Service/UserListLink/user-list-link.service";
+import {ListRole} from "../../Enum/list-role";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 
 @Component({
@@ -15,9 +19,12 @@ export class ListPageComponent {
   isCategoryInputVisible = false;
   newCategory: ListCategory;
   newTask: Task;
-  constructor(private categoryService: CategoryService, private taskService: TaskService) {
+  currentUserRoleInCurrentList: ListRole;
+
+  constructor(private categoryService: CategoryService, private taskService: TaskService, private userListLinkService: UserListLinkService) {
     this.newCategory = new ListCategory();
     this.newTask = new Task();
+    this.currentUserRoleInCurrentList = ListRole.VIEWER;
   }
 
   ngOnInit() {
@@ -32,13 +39,15 @@ export class ListPageComponent {
       });
     });
   }
+
   toggleShowDoneTasks(category: any) {
     category.showDoneTasks = !category.showDoneTasks;
   }
 
   onCheckboxChange(task: Task) {
-      this.taskService.changeTaskStatus(task);
+    this.taskService.changeTaskStatus(task);
   }
+
   toggleCategoryNameInput() {
     this.isCategoryInputVisible = !this.isCategoryInputVisible;
   }
@@ -56,6 +65,17 @@ export class ListPageComponent {
     category.showTaskInput = false;
     this.taskService.addTaskToList(category.id, this.newTask);
   }
+
+
+  //TODO GIVE ONLY USER WITH EDITOR OR OWNER ROLE POSSIBILITY TO EDIT LIST
+   public checkIfCurrentUserHasPermission()  {
+
+    // return this.userListLinkService.checkIfCurrentUserHasPermission().pipe(
+    //   map(data => !!data)
+    // );
+    return true;
+  }
+
 }
 
 

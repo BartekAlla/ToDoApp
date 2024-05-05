@@ -53,6 +53,7 @@ public class SecurityConfig {
                         "/tasks/category/**",
                         "/tasks/**",
                         "/ullinks",
+                        "/ullinks/**",
                         "/lists/links/**",
                         "/lists").authenticated()
                 .and()

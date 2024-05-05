@@ -46,4 +46,12 @@ export class UserListService {
       responseType: 'json'
     });
   }
+  public getCurrentListId() {
+    try {
+      return localStorage.getItem('list') ?? 0;
+    } catch (error) {
+      return 0;
+    }
+  }
 }
+

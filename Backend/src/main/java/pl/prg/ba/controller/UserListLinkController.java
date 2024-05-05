@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.prg.ba.entity.UserListLink;
+import pl.prg.ba.enums.list.ListRole;
 import pl.prg.ba.service.UserListLinkService;
 
 
@@ -17,6 +18,11 @@ public class UserListLinkController {
     @PostMapping
     public UserListLink createUserListLink(@RequestBody UserListLink userListLink) {
         return userListLinkService.createUserListLink(userListLink);
+    }
+    @GetMapping("/user={userId}/list={listId}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public ListRole getCurrentUserPermissionForThisList(@PathVariable Integer userId, @PathVariable Integer listId) {
+        return userListLinkService.getCurrentUserPermissionForThisList(userId, listId);
     }
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
